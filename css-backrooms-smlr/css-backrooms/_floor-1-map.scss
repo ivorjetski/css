@@ -1,0 +1,211 @@
+﻿z floor tile {
+    //wood
+    $wood: 30,29,41,90,5,6,7,8,89,10,11,1,2,3,4, 13, 14,15, 31,43,67,79, 82,94,106,118, 114, 115,116,117,129,128,127,126, 141,140,139,138,51, 52,50,62, 137, 100,113, 125, 74, 85,86;
+    $short-wood: 30,90,41, 114,126,129,118,79,43, 15, 52, 137,89, 136, 100, 113, 125, 74, 85, 86;
+    $short-wood-right: 90, 52,113, 85, 64;
+
+    &:after, &:before {
+        filter: brightness(.9);
+    }
+
+    %wood {
+        width: .05rem;
+        height: $tile;
+        transform: translate3d(2.97rem, 0rem, 5.5rem) rotateY(270deg);
+        background: linear-gradient(90deg, rgba($white,.5),$none .01rem, $none 2.4rem, rgba($blk,.9)),$ceiling1;
+    }
+
+    %short {
+        height: ($tile - .5rem );
+        transform: translate3d(2.97rem, 0rem, 5.5rem) rotateY(270deg);
+    }
+
+    @each $i in $wood {
+        &:nth-of-type(#{$i}) span:before {
+            @extend %wood;
+        }
+    }
+
+    @each $i in $short-wood {
+        &:nth-of-type(#{$i}) span:before {
+            @extend %short;
+        }
+    }
+
+    @each $i in $short-wood-right {
+        &:nth-of-type(#{$i}) span:before {
+            transform: translate3d(2.97rem, .5rem, 5.5rem) rotateY(270deg);
+        }
+    }
+    //corner wood
+    &:nth-of-type(29), &:nth-of-type(89), &:nth-of-type(50), &:nth-of-type(1), &:nth-of-type(13) {
+        span {
+            &:before, &:after {
+                width: .05rem;
+                height: $tile;
+                background: linear-gradient(90deg, rgba($white,.5),$none .01rem, $none 2.4rem, rgba($blk,.9)),$ceiling1;
+                box-shadow: none !important;
+            }
+
+            &:after {
+                transform: translate3d(1.5rem, -1.49rem, 5.5rem) rotateZ(-90deg) rotateY(270deg);
+            }
+        }
+    }
+    //opposite wood
+    &:nth-of-type(14), &:nth-of-type(15) {
+        span {
+            &:before {
+                transform: translate3d(-.02rem, 0rem, 5.5rem) rotateY(270deg) rotateX(180deg);
+            }
+        }
+    }
+    //corner top left ▛
+    $top-left: 1,21,25,29,32,34,50,68,89,97,110;
+
+    //corner top right ▜
+    $top-right: 12,16,36,82,129, 112;
+
+    //corner bottom left ▙
+    $bottom-left: 133,13,17,44,77,80,85,130;
+
+    //corner bottom right ▟
+    $bottom-right: 144,20,24,40,33,46,59,124,131,88;
+
+    //////// no more corners!!!
+    // rotate!
+    $r90: 2,3,4,5,6,7,8,9,10,11,14,15,18,22,23,26,27, 30,35,38,39,45,51,52,56,57,58,69,70,71,78,81,86,90,92,93, 98,99,111,114,115,116,117,123,126,127,128,134,135, 136,137,138,139,140,141,142,143, 100;
+
+    //no walls!!
+    $no-walls: 19,42,53,54,55,63,66,75,91,101,102,103,104,105,87;
+
+    //no left, no top
+    $no-left: 18,28,30,31,38,39,43,64,67,72,76,78,79,86,94,99,106,114,115,116,117,118,123,134,137,138,139,140,141;
+
+    //no right, no bottom
+    $no-right: 5,6,7,8,26,27,35,37,41,51,52,62,65,71,74,90,92,93, 111,113,122,125,126,127,128;
+
+    %test {
+        background: linear-gradient(90deg,$dirt,$none $shadow, $none), linear-gradient($dirt,$none $shadow, $none);
+    }
+
+    %test2 {
+        background: linear-gradient(180deg,$dirt,$none $shadow, $none), linear-gradient(270deg,$dirt,$none $shadow, $none);
+    }
+    //corner top left ▛
+    @each $i in $top-left {
+        &:nth-of-type(#{$i}) {
+            @extend %top-left;
+        }
+    }
+    //corner top right ▜
+    @each $i in $top-right {
+        &:nth-of-type(#{$i}) {
+            @extend %top-right;
+        }
+    }
+    //corner bottom left ▙
+    @each $i in $bottom-left {
+        &:nth-of-type(#{$i}) {
+            @extend %bottom-left;
+        }
+    }
+    //corner bottom right ▟
+    @each $i in $bottom-right {
+        &:nth-of-type(#{$i}) {
+            @extend %bottom-right;
+        }
+    }
+
+    @each $i in $r90 {
+        &:nth-of-type(#{$i}) {
+            @extend %r901;
+        }
+    }
+
+    @each $i in $no-walls {
+        &:nth-of-type(#{$i}) {
+            @extend %no-walls;
+        }
+    }
+
+    @each $i in $no-left {
+        &:nth-of-type(#{$i}) {
+            @extend %no-left;
+        }
+    }
+
+    @each $i in $no-right {
+        &:nth-of-type(#{$i}) {
+            @extend %no-right;
+        }
+    }
+    //short
+
+    &:nth-of-type(30):after, &:nth-of-type(29):after {
+        width: ($tile * 1.75);
+    }
+    // so the short wall doesn't start from the ceiling
+
+    &:nth-of-type(30) {
+        background: linear-gradient(90deg,$dirt,$none $shadow, $none);
+
+        &:after {
+            transform: translate3d(0rem, $tile, 0) rotateX(180deg) rotateY(90deg);
+        }
+
+        span:before {
+            transform: translate3d(2.97rem, .53rem, 5.5rem) rotateY(270deg) !important;
+        }
+    }
+    //lights
+    //light floor
+    &:nth-of-type(66) {
+        &:after {
+            animation: flicker2 5s ease-in-out reverse infinite;
+        }
+    }
+    //for corner wood to work
+    &:not(:nth-of-type(29),:nth-of-type(50),:nth-of-type(89),:nth-of-type(90),:nth-of-type(1),:nth-of-type(13)) span:after {
+        width: 40%;
+        height: 98%;
+        background: #fff;
+        border-radius: .1rem;
+        display: none;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+    }
+
+    $lights: 6, 30, 54,3,9,12,15,21,36,38,45,51,54,57,60,61,69,75,81,78,99,101,103,105,107,109,120,123,138,140,142,144;
+
+    %lights {
+        display: block;
+    }
+
+    %rotate {
+        width: 98%;
+        height: 40%;
+    }
+
+    @each $i in $lights {
+        &:nth-of-type(#{$i}) span:after {
+            @extend %lights;
+        }
+    }
+
+    $rotate: 54, 12,21,75,99, 105,103,101;
+    $flicker: 54,99,107;
+
+    @each $i in $flicker {
+        &:nth-of-type(#{$i}) span:after {
+            animation: flicker 5s ease-in-out reverse infinite;
+        }
+    }
+
+    @each $i in $rotate {
+        &:nth-of-type(#{$i}) span:after {
+            @extend %rotate;
+        }
+    }
+}

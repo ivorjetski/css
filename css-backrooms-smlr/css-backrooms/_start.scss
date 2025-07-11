@@ -1,0 +1,219 @@
+﻿start-text {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -99;
+
+    & > div {
+        background: rgba($blk,.8);
+        padding: 0 1.5rem;
+        box-shadow: 0 -1rem 1rem rgba($blk,.5);
+
+        @media (orientation: portrait) {
+            padding: 0 1rem;
+        }
+
+        color: $sbg;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        line-height: 1.35;
+        z-index: 1;
+        text-align: left;
+        transform: translate3d(0,30rem,0);
+        display: flex;
+        width: 100%;
+        box-sizing: border-box;
+        font-size: clamp(10px, 1.2vw, 16px);
+
+        @media (prefers-color-scheme: light) {
+            color: $drk;
+            background: rgba($sbg,.75);
+        }
+
+        p {
+            margin-block: .8rem;
+        }
+
+        & > div {
+            div:nth-of-type(1) {
+                height: 100%;
+                float: right;
+                display: flex;
+                align-items: flex-end;
+                shape-outside: inset(calc(100% - 8rem) 0 0 0);
+                box-sizing: border-box;
+            }
+        }
+
+        h1 {
+            background: repeating-linear-gradient( -45deg, $yellow, $yellow 10px, $drk 10px, $drk 20px );
+            padding: .75rem;
+            border-radius: .5rem;
+            border: 1px outset $white;
+            box-shadow: .05rem .05rem .2rem rgba($body,.5);
+            margin: 1rem 0 1rem 1rem;
+            font-style: italic;
+
+            > span {
+                background: #000;
+                padding: .05rem;
+                border-radius: .25rem;
+            }
+
+            > span, label {
+                display: block;
+            }
+
+            label {
+                padding: 1rem 2rem 1.3rem;
+                font-size: 1.4rem;
+                cursor: pointer;
+                font-weight: 600;
+                position: relative;
+                z-index: 1;
+                color: #fff;
+                box-shadow: .2rem .5rem .2rem rgba($blk,.5), .1rem .2rem .2rem rgba($blk,.5), .2rem .2rem .4rem rgba($red,.25);
+                text-transform: uppercase;
+                z-index: 1;
+
+                span {
+                    display: none;
+                }
+
+                &:before, &:after {
+                    content: '';
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    border-radius: .3em;
+                    left: 0;
+                    right: 0;
+                    top: 0;
+                    z-index: -1;
+                }
+
+                &:before {
+                    background: linear-gradient(rgba($red,.5), $none), //
+                    linear-gradient(90deg, rgba($red,.5), $none), darken($red,50);
+                    box-shadow: inset 0 0 .05rem .1rem darken($red,60), inset 0 .2rem .05rem $yellow, inset 0 -.2rem .2rem rgba($red,.2);
+                    border-radius: .4em;
+                }
+
+                &:after {
+                    transform: translate3d( 0, -.2rem, -.3rem) scaleX(.95) scaleY(.75);
+                    box-shadow: inset 0 0 .25rem lighten($kk,10), 0 0 .25rem lighten($kk,10), inset 0 -.1rem .8rem -.3rem $yellow, -.05rem 0 .1rem $yellow;
+                    background-image: radial-gradient(rgba($red,.8) 60%, $none 0), //
+                    radial-gradient(rgba(darken($red,20),.2) 80%, $none 0), //
+                    radial-gradient($orange, mix($red, $orange, 70%),darken($red,20));
+                    background-size: .4rem .4rem,.4rem .4rem, auto;
+                    mix-blend-mode: hard-light;
+                }
+
+                &:hover, &:focus, &:active {
+                    box-shadow: .1rem .3rem .2rem rgba($blk,.5), 0 .1rem .2rem rgba($blk,.5), .1rem .1rem .4rem rgba($red,.25);
+                    transform: translate3d(0,.05rem, 0) scale(.99);
+
+                    &:before {
+                        box-shadow: inset 0 -.2rem .05rem .1rem darken($red,60), //
+                        inset 0 -.2rem .2rem rgba($red,.2), //
+                        inset 0 .1rem .1rem $drk, //
+                        inset 0 .2rem .1rem rgba($yellow,.5);
+                    }
+
+                    &:after {
+                        box-shadow: inset 0 0 .25rem lighten($kk,10), //
+                        0 0 .25rem lighten($kk,10), //
+                        inset 0 -.1rem .8rem -.3rem $yellow;
+                        background-image: radial-gradient(rgba($red,.8) 60%, $none 0), //
+                        radial-gradient(rgba(darken($red,20),.2) 80%, $none 0), //
+                        radial-gradient($yellow, $orange,darken($red,20));
+                    }
+                }
+            }
+        }
+    }
+}
+
+body:not(:has(#start:checked)) {
+    > div:after {
+        animation: start ($time * 5) linear forwards;
+    }
+
+    other:nth-of-type(1) > u {
+        animation: scary-start $time ($time * 1.5) linear forwards;
+    }
+}
+
+@keyframes start {
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes scary-start {
+    99% {
+        transform: translate3d(1rem, 30rem, 1.5rem) rotateX(-90deg);
+        opacity: .5;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+body:has(#start:checked) {
+    #right4:checked ~ content > w > x {
+        animation: killrotate2 0s !important;
+    }
+
+    > div:before {
+        box-shadow: inset .5rem .5rem 1rem rgba(red,.1), inset -.5rem -.5rem 1rem rgba(cyan,.1);
+    }
+
+    start-text {
+        z-index: 99;
+
+        > div {
+            transform: translate3d(0,0,0);
+        }
+    }
+
+    content {
+        perspective: calc((650px - 6vw) - 3vh);
+
+        @media only screen and (min-width: 1300px) {
+            perspective: 33rem;
+        }
+
+        floor {
+            width: (12 * $tile) !important;
+            height: (12 * $tile) !important;
+            transform: translate3d(0rem, -14.9rem, 18rem) rotateX(90deg) !important;
+
+            tile {
+                display: block !important;
+            }
+        }
+    }
+
+    w {
+        transform: translate3d(-.4rem, -.6rem, 35rem) rotate(3deg);
+    }
+
+    input {
+        display: none;
+    }
+
+    buttons {
+        transform: translate3d(30rem,0,0);
+    }
+
+    gfx {
+        transform: translate3d(-30rem,0,0);
+    }
+}

@@ -1,0 +1,42 @@
+﻿label[for="level-2"], label[for="level-1"] {
+    width: .4rem;
+    aspect-ratio: 1/1;
+    box-shadow: .01rem 0 .2rem $dirt;
+    border-radius: .03rem;
+    transform: translate3d(2.5rem, -0.19rem, 2.4rem) rotateY(90deg) rotateX(-90deg) scale(0.5);
+    background: $light-beige;
+    cursor: pointer;
+    pointer-events: auto !important;
+
+    &:before {
+        width: .15rem;
+        height: .04rem;
+        background: linear-gradient(270deg,$dark-beige,$none);
+        box-shadow: 0 0 0 .001rem $dirt;
+        inset: 0;
+        margin: auto;
+        transform: translate3d(0,0,.01rem) rotateZ(180deg);
+    }
+}
+
+label[for="level-2"] {
+    display: none;
+}
+
+label[for="level-1"] {
+    background: var( --light-beige);
+}
+
+body:has(#level-1:checked) {
+    label[for="level-1"] {
+        display: none;
+    }
+
+    label[for="level-2"] {
+        display: block;
+
+        &:before {
+            background: linear-gradient(90deg,$dark-beige,$none);
+        }
+    }
+}

@@ -1,0 +1,103 @@
+﻿body:has(#bh:checked):has(#top-view:checked) {
+    w {
+        transform: translate3d(-12rem, 7rem, -5rem) rotateX(-90deg) !important;
+        transform: translate3d(10rem, 6rem, -8rem) rotateX(90deg) rotateY(180deg) !important;
+        transform: translate3d(-4rem, 2rem, -10rem) rotateX(90deg) rotateY(180deg) scaleX(-1) !important;
+    }
+
+    *:before, *:after, * {
+        backface-visibility: visible;
+        box-shadow: none !important;
+        filter: none !important;
+    }
+
+    background: #fff;
+
+    content floor {
+        width: (12 * $tile) !important;
+        height: (12 * $tile) !important;
+    }
+
+    content tile {
+        color: #000;
+        display: block !important;
+
+        &:before, &:after {
+            color: $none;
+        }
+
+        span {
+            transform: scaleZ(-1);
+            font-size: .9rem;
+            opacity: .9;
+            word-spacing: 1rem;
+        }
+
+        span:after {
+            background: yellow;
+            display: none !important;
+        }
+    }
+
+    y {
+        &:before {
+            width: 100%;
+            height: 100%;
+            transform: translate3d(0, 0, 0) rotateX(90deg);
+            transform-origin: bottom;
+        }
+    }
+
+    x {
+        &:before {
+            width: 100%;
+            height: 100%;
+            transform: translate3d(0, 0, 0) rotateX(90deg);
+            transform-origin: 0 2.25rem .75rem;
+        }
+    }
+
+    z {
+        background: rgba(yellow,.5);
+
+        &:before {
+            width: 100%;
+            height: 100%;
+            transform: translate3d(0, 0, 0) rotateX(90deg);
+            transform-origin: bottom;
+        }
+    }
+
+    z floor tile span {
+        background: none;
+    }
+}
+
+body:has(#bh:checked) {
+    color: #fff;
+
+    %test {
+        background: rgba( magenta,.9);
+    }
+
+    @for $x from 1 through $grid {
+        &:has(#x-#{$x}:checked) {
+            @for $y from 1 through $grid {
+                &:has(#z-#{$y}:checked) {
+                    $yn1: ($y - 1);
+                    $sum: ($yn1 * $grid + $x);
+
+                    floor:nth-of-type(1) tile:nth-of-type(#{$sum}) {
+                        @extend %test;
+                    }
+                }
+            }
+        }
+    }
+
+    input {
+        display: inline !important;
+        z-index: 999;
+        position: relative;
+    }
+}

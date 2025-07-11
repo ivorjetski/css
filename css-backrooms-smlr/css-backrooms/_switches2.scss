@@ -1,0 +1,103 @@
+﻿// switch floors
+
+/*body:has(#z-1:checked):has(#x-12:checked):has(#right1:checked) {
+    #rbf-label-1 {
+        display: block;
+    }
+
+    .rightb.rb2 {
+        display: none;
+    }
+}*/
+
+body:has(#level-1:checked) {
+    x z floor tile:nth-of-type(10):before {
+        transform: translate3d(-.1rem, 0, 6rem) rotateZ(-2deg) rotateY(89deg);
+        filter: hue-rotate(-1deg);
+    }
+
+    x z floor tile:nth-of-type(3):before {
+        transform: translate3d(.1rem, 0, 6rem) rotateZ(2deg) rotateY(91deg);
+        filter: hue-rotate(1deg);
+    }
+}
+
+body:has(#level-2:checked) {
+    tile:nth-of-type(10) {
+        background: green;
+    }
+
+    tile:nth-of-type(3) {
+        background: green;
+    }
+}
+
+//top right
+//top right
+//top right
+//top right
+
+body:has(#z-1:checked):has(#x-10:checked):has(#right1:checked,#left3:checked):has(#level-1:checked) {
+    #level-2-label-down {
+        display: block;
+    }
+
+    .downb[for="x-11"] {
+        display: none;
+    }
+}
+
+body:has(#z-1:checked):has(#x-10:checked):has(#right1:checked,#left3:checked):has(#level-2:checked) {
+    content > w > x > y {
+        transform: translate3d(-30rem, 0, 0);
+    }
+
+    .upb, .downb, #level-2-label-down {
+        display: none !important;
+    }
+
+    buttons > .downb[for="x-12"], #level-1-label-up {
+        display: block !important;
+    }
+}
+
+//top left
+//top left
+//top left
+//top left
+
+body:has(#z-1:checked):has(#x-3:checked):has(#right3:checked,#left1:checked):has(#level-1:checked) {
+    #level-2-label-up {
+        display: block;
+    }
+
+    .upb[for="x-2"] {
+        display: none;
+    }
+}
+
+body:has(#z-1:checked):has(#x-3:checked):has(#right3:checked,#left1:checked):has(#level-2:checked) {
+    content > w > x > y {
+        transform: translate3d(-3rem, 0, 0);
+    }
+
+    .upb, .downb, #level-2-label-up {
+        display: none !important;
+    }
+
+    buttons > .upb[for="x-1"], #level-1-label-down {
+        display: block !important;
+    }
+}
+
+//bottom left
+
+tile:nth-of-type(135) {
+    background: red;
+}
+
+//bottom right
+
+tile:nth-of-type(142) {
+    background: red;
+}

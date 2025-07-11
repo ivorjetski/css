@@ -1,0 +1,382 @@
+﻿//door
+
+%end {
+    > div:after {
+        animation: darken 2s linear forwards;
+
+        @keyframes darken {
+            100% {
+                opacity: .5;
+            }
+        }
+    }
+
+    content *, content *:before, content *:after {
+        backface-visibility: visible !important;
+    }
+
+    z floor tile {
+        &:nth-of-type(61) {
+            span:before {
+                border: .1rem outset var(--ceiling);
+                border-left: 0;
+                height: ($tile / 1.5);
+                width: $tile;
+                transform: translate3d(0rem, -1rem, 4.5rem) rotateY(90deg) rotateX(-90deg);
+                box-shadow: $tile 0 0 .5rem var(--medium-beige), 0 .5rem 0 var(--medium-beige), 0 -.5rem 0 var(--medium-beige);
+            }
+        }
+
+        &:nth-of-type(49) {
+            span:before {
+                border: .1rem outset var(--ceiling);
+                border-left: 0;
+                height: ($tile / 1.5);
+                width: $tile;
+                transform: translate3d(0rem, 2rem, 4.5rem) rotateY(90deg) rotateX(90deg);
+                box-shadow: $tile 0 0 .5rem var(--medium-beige), 0 .5rem 0 var(--medium-beige), 0 -.5rem 0 var(--medium-beige);
+            }
+        }
+    }
+    // cot
+
+    tile:nth-of-type(75) label {
+        /* animation: cot 10s linear forwards infinite;*/
+        width: ($tile / 2);
+        height: ($tile + .01rem);
+        transform: translate3d(0rem, 0rem, .2rem) rotateZ(90deg);
+        cursor: pointer;
+        z-index: 99999999999999;
+
+        &, &:before, &:after, u, u:before, u:after {
+            backface-visibility: visible;
+            background: repeating-linear-gradient($none, $none .13rem, $bars .13rem, $bars .15rem ), //
+            repeating-linear-gradient(90deg, $none, $none .275rem, $bars .275rem, $bars .3rem );
+
+            @-moz-document url-prefix() {
+                background: repeating-linear-gradient($none, $none .16rem, $bars .16rem, $bars .2rem ), //
+                repeating-linear-gradient(90deg, $none, $none .3rem, $bars .3rem, $bars .4rem );
+            }
+
+            outline: .005rem solid $bars;
+            box-sizing: content-box;
+        }
+
+        &:before, &:after {
+            width: 100%;
+            height: ($tile / 2);
+        }
+        //short side
+        &:before {
+            transform: translate3d(0, 2.26rem, 0.65rem) rotateX(90deg) rotateZ(90deg);
+        }
+        //short side
+        &:after {
+            transform: translate3d(0, -0.76rem, 0.65rem) rotateX(90deg) rotateZ(90deg)
+        }
+        //top
+        & > u:nth-of-type(1) {
+            width: 100%;
+            height: 100%;
+            transform: translate3d(0,0,1.4rem);
+            background: none;
+
+            &:before, &:after {
+                width: (($tile / 2) - .1rem);
+                height: 100%;
+            }
+            //long side
+            &:before {
+                transform: translate3d(0.8rem, 0, -0.7rem) rotateY(90deg);
+            }
+            //long side
+            &:after {
+                transform: translate3d(-.7rem, 0, -0.7rem) rotateY(90deg);
+            }
+
+            & > u:nth-of-type(1) {
+                width: 100%;
+                height: 100%;
+                filter: blur(.05rem);
+                transform: translate3d(0,0,-1.55rem);
+                //shadow
+                &:before {
+                    transform: translate3d(0, 0, 1rem);
+                    background: $red;
+                    width: 1rem;
+                    aspect-ratio: 1/1;
+                    border-radius: 50%;
+                    opacity: .9;
+                }
+            }
+
+            & > u:nth-of-type(2) {
+                width: 100%;
+                height: 100%;
+                /* background: red;*/
+                transform-origin: 0;
+                transition: transform 2s ease-in-out;
+            }
+
+            & > u:nth-of-type(3), & > u:nth-of-type(4) {
+                transform: translate3d(0, 1rem, -1rem);
+                animation: orb 2s linear alternate infinite;
+
+                &, &:before, &:after {
+                    background: rgba(#fff,.5);
+                    width: .5rem;
+                    aspect-ratio: 1/1;
+                    border-radius: 50%;
+                    outline: none;
+                    box-shadow: 0 0 .1rem #fff;
+                }
+
+                &:before {
+                    transform: rotateY(90deg);
+                    filter: blur(.1rem);
+                }
+
+                &:after {
+                    transform: rotateX(90deg);
+                    filter: blur(.1rem);
+                }
+            }
+
+            & > u:nth-of-type(4) {
+                display: none;
+            }
+
+            @keyframes orb {
+                5% {
+                    transform: translate3d(0, 2.5rem, -.5rem);
+                }
+
+                15% {
+                    transform: translate3d(1rem, -.5rem, -1rem);
+                }
+
+                35% {
+                    transform: translate3d(.5rem, .5rem, -1.5rem);
+                }
+
+                53% {
+                    transform: translate3d(0, 1rem, -.5rem);
+                }
+
+                80% {
+                    transform: translate3d(.5rem, -.5rem, 0rem);
+                }
+
+                90% {
+                    transform: translate3d(.1rem, 1.5rem, -1.5rem);
+                }
+            }
+        }
+    }
+    //lady
+
+    tile:nth-of-type(74) {
+        /*  transform: rotateZ(-90deg);*/
+
+        > u:nth-of-type(2) {
+            width: .5rem;
+            aspect-ratio: 1/1;
+            background: $drk;
+            border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+            transform: translate3d(.2rem,.5rem,0) rotate(-14deg);
+            opacity: .5;
+
+            &:before {
+                //wn2
+                width: 1.4rem;
+                height: 2rem;
+                border-top: 2rem solid $drk;
+                transform: translate3d(-.5rem, 1rem, 0) rotate(-1deg);
+                border-radius: 47% 31% 47% 48% / 86% 84% 14% 12%;
+            }
+
+            &:after {
+                //wn2
+                border-radius: 52% 48% 48% 52% / 6% 9% 91% 94%;
+                width: .2rem;
+                height: .5rem;
+                background: $drk;
+                transform: translate3d(.1rem, 2.7rem, 0) rotate(10deg);
+                box-shadow: .3rem 0 0 $drk;
+            }
+
+            > u {
+                //wn3
+                width: .8rem;
+                height: 1rem;
+                transform: translate3d(-.2rem, .25rem, 0);
+                background: $drk;
+                border-radius: 47% 43% 28% 50% / 31% 15% 70% 64%;
+
+                &:before {
+                    //wn4
+                    border-radius: 34% 66% 48% 52% / 46% 44% 56% 54%;
+                    width: 1.1rem;
+                    aspect-ratio: 1/1;
+                    border-left: .2rem solid $drk;
+                    border-right: .2rem solid $drk;
+                    border-bottom: .4rem solid $drk;
+                    transform: translate3d(-.15rem, -.6rem, 0rem) rotate(2deg);
+                }
+            }
+        }
+    }
+}
+
+$room: ( 1: 1 1, 2: 2 1, 3: 3 1, 13: 1 2, 14: 2 2, 15: 3 2, 25: 1 3, 26: 2 3, 27: 3 3, 37: 1 4, 38: 2 4, 39: 3 4, 49: 1 5, 50: 2 5, 51: 3 5, 61: 1 6, 62: 2 6, 63: 3 6, 73: 1 7, 74: 2 7, 75: 3 7 );
+
+@each $key, $values in $room {
+    $first-value: nth($values, 1);
+    $second-value: nth($values, 2);
+
+    body:has(#level-2:checked):has(#x-#{$first-value}:checked):has(#z-#{$second-value}:checked) {
+        @extend %end;
+    }
+}
+
+html:has(#finish:checked) {
+    animation: blue 7s 4s ease-in forwards;
+
+    body > div:after {
+        display: none !important;
+    }
+
+    tile:nth-of-type(75) label {
+        & > u:nth-of-type(1) > u:nth-of-type(2) {
+            transform: rotateY(-100deg);
+        }
+
+        & > u:nth-of-type(1) > u:nth-of-type(3) {
+            display: none;
+        }
+
+        & > u:nth-of-type(1) > u:nth-of-type(4) {
+            display: block !important;
+            animation: escape 7s ease-in-out forwards !important;
+        }
+    }
+
+    body > div > div > content {
+        animation: end 7s 4s forwards;
+    }
+
+    end-text {
+        animation: endtext 1s 10s forwards;
+    }
+}
+
+@keyframes escape {
+    10% {
+        transform: translate3d(0, .5rem, -1.5rem);
+    }
+
+    100% {
+        transform: translate3d(0, 1rem, 5rem) scale(1.5);
+    }
+}
+
+@keyframes end {
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes blue {
+    100% {
+        background: radial-gradient(circle at top, #fff, skyblue);
+    }
+}
+
+@keyframes endtext {
+    100% {
+        transform: translate3d(0,0,0);
+    }
+}
+
+end-text {
+    z-index: 999;
+    padding: 2rem;
+    background: $sbg;
+    max-width: 300px;
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    color: $body;
+    height: fit-content;
+    line-height: 1.35;
+    animation: glitch 2s linear infinite;
+    font-size: 1.1rem;
+    transform: translate3d(0,-100rem,0);
+    filter: drop-shadow(-1rem -1rem 0 red, 1rem 1rem 0 green);
+
+    &:before, &:after, label:before, label:after {
+        width: 99%;
+        height: 99%;
+        background: $sbg;
+        content: '';
+        position: absolute;
+        left: -1rem;
+        top: -1rem;
+        z-index: -1;
+        animation: glitch2 2s -1s linear infinite;
+    }
+
+    &:after, label:after {
+        left: 1rem;
+        top: 1rem;
+        animation: glitch2 2s -.5s linear infinite;
+    }
+
+    label:before, label:after {
+        background: $blk;
+    }
+
+    label {
+        background: $body;
+        color: #000;
+        padding: 1rem;
+        margin: 2rem;
+        display: block;
+        cursor: pointer;
+        position: relative;
+        animation: glitch 2s linear infinite;
+
+        &:hover, &:focus, &:active {
+            background: $blk;
+            transform: scale(1.1);
+        }
+    }
+}
+
+@keyframes glitch {
+    10%, 30%, 70% {
+        background: $dirt;
+        border-top: .1rem solid $none;
+        color: $blk;
+    }
+
+    29%, 60%, 100% {
+        background: $sbg;
+        border-bottom: .1rem solid $none;
+    }
+}
+
+@keyframes glitch2 {
+    10%, 30%, 70% {
+        background: rgba($sbg,.5);
+        border-top: .1rem solid $none;
+    }
+
+    29%, 60%, 100% {
+        background: repeating-linear-gradient($sbg, $sbg .1rem, $none .1rem, $none .2rem );
+        border-bottom: .1rem solid $none;
+        top: auto;
+        bottom: -1rem;
+        transform: scale(1.01);
+    }
+}

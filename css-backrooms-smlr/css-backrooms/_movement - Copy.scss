@@ -1,0 +1,400 @@
+﻿tile {
+    display: none;
+}
+
+%d-block {
+    display: block;
+}
+
+%d-none {
+    display: none;
+}
+
+%flex-end {
+    align-content: flex-end;
+}
+
+content, w, x, y, z {
+    transition: transform $time $ease;
+}
+
+x {
+    transition: transform $time $ease;
+}
+
+.upb, .downb, .rightb, .leftb, .dead {
+    display: none;
+}
+
+#original:checked {
+    ~ buttons > {
+        .rb1, .lb1 {
+            display: block;
+        }
+    }
+}
+
+/*v {
+    animation: bob 10s ease-in-out infinite;
+
+    @keyframes bob {
+        50% {
+            transform: rotateZ(.5deg);
+        }
+    }
+}*/
+
+/*body:has(input:checked) tile:before {
+    animation: clean $time linear;
+
+    @keyframes clean {
+        0%,100% {
+            box-shadow: none !important;
+        }
+    }
+}*/
+
+body:has(.leftb:hover) {
+    content x {
+        transform: rotateY(-10deg);
+    }
+}
+
+body:has(.rightb:hover) {
+    content x {
+        transform: rotateY(10deg);
+    }
+}
+// <- left
+#left1:checked {
+    ~ content > w > x {
+        transform: rotateY(-90deg);
+    }
+
+    ~ buttons > {
+        .rb4, .lb2 {
+            display: block;
+        }
+    }
+}
+// <- backwards
+#left2:checked {
+    ~ content > w > x {
+        transform: rotateY(-180deg);
+    }
+
+    ~ buttons > {
+        .rb5, .lb3 {
+            display: block;
+        }
+    }
+}
+// <-- right
+#left3:checked {
+    ~ content > w > x {
+        transform: rotateY(-270deg);
+    }
+
+    ~ buttons > {
+        .rb6, .lb4 {
+            display: block;
+        }
+    }
+}
+// <- start
+#left4:checked {
+    ~ content > w > x {
+        animation: killrotate $time $ease;
+
+        @keyframes killrotate {
+            0% {
+                transform: rotateY(-270deg);
+            }
+
+            99% {
+                transform: rotateY(-360deg);
+            }
+
+            100% {
+                transform: rotateY(0deg);
+            }
+        }
+    }
+
+    ~ buttons > {
+        .rb1, .lb1 {
+            display: block;
+        }
+    }
+}
+// -> right
+#right1:checked {
+    ~ content > w > x {
+        transform: rotateY(90deg);
+    }
+
+    ~ buttons > {
+        .rb2, .lb4 {
+            display: block;
+        }
+    }
+}
+// -> backwards
+#right2:checked {
+    ~ content > w > x {
+        transform: rotateY(180deg);
+    }
+
+    ~ buttons > {
+        .rb3, .lb5 {
+            display: block;
+        }
+    }
+}
+// -> left
+#right3:checked {
+    ~ content > w > x {
+        transform: rotateY(270deg);
+    }
+
+    ~ buttons > {
+        .rb4, .lb6 {
+            display: block;
+        }
+    }
+}
+// -> start
+#right4:checked {
+    ~ content > w > x {
+        animation: killrotate2 $time $ease;
+
+        @keyframes killrotate2 {
+            0% {
+                transform: rotateY(270deg);
+            }
+
+            99% {
+                transform: rotateY(360deg);
+            }
+
+            100% {
+                transform: rotateY(0deg);
+            }
+        }
+    }
+
+    ~ buttons > {
+        .rb1, .lb1 {
+            display: block;
+        }
+    }
+}
+// swap them
+#left2:checked, #left3:checked, #right1:checked, #right2:checked {
+    ~ buttons > {
+        .upb {
+            bottom: 1.5rem;
+
+            &:after {
+                content: '\2193';
+            }
+        }
+
+        .downb {
+            bottom: 6.75rem;
+
+            &:after {
+                content: '\2191';
+            }
+        }
+    }
+}
+// z loop
+@for $i from 0 through $grid {
+    #z-#{$i}:checked {
+        ~ content > w > x > y > z {
+            transform: translate3d(0,0,-(($i - 1 ) * $tile + ($tile / 2)));
+        }
+
+        ~ buttons > {
+            .upb[for="z-#{$i - 1}"], .downb[for="z-#{$i + 1}"] {
+                @extend %d-block;
+            }
+        }
+    }
+}
+// x loop
+@for $i from 0 through $grid {
+    #x-#{$i}:checked {
+        ~ content > w > x > y {
+            transform: translate3d(-(($i - 1) * $tile),0,0);
+        }
+
+        ~ buttons > {
+            .upb[for="x-#{$i - 1}"], .downb[for="x-#{$i + 1}"] {
+                @extend %d-block;
+            }
+        }
+    }
+}
+
+#left2, #left4, #original, #right2, #right4 {
+    &:checked ~ buttons > {
+        .bx {
+            display: none !important;
+        }
+    }
+}
+
+#left2, #left4, #right2, #right4 {
+    &:checked ~ buttons > {
+        .bx {
+            display: none !important;
+        }
+    }
+}
+
+#left1, #left3, #right1, #right3 {
+    &:checked ~ buttons > {
+        .bz {
+            display: none !important;
+        }
+    }
+}
+//test
+/*@for $x from 1 through $grid {
+    body:has(#x-#{$x}:checked) {
+        @for $y from 1 through $grid {
+            &:has(#z-#{$y}:checked) {
+                $yn1: ($y - 1);
+                $sum: ($yn1 * $grid + $x);
+
+                floor:nth-of-type(1) tile:nth-of-type(#{$sum}) {
+                    background: rgba( magenta,.9);*/
+/* background: radial-gradient($body,$none,$none);*/
+/*}
+            }
+        }
+    }
+}*/
+
+//z
+@for $col from 1 through $grid {
+    body:has(#x-#{$col}:checked):has(.z-rotation:checked) {
+        .col-#{$col - 2}, .col-#{$col - 1}, .col-#{$col}, .col-#{$col + 1}, .col-#{$col + 2} {
+            @extend %d-block;
+        }
+
+        z floor {
+            transform: translate3d(#{($col - 3) * $tile }, -((5 * $tile) - .1), 18rem) rotateX(90deg);
+
+            &:before {
+                left: -#{$col * $tile - 2};
+                right: -#{( $grid - $col) * $tile + 1};
+            }
+        }
+    }
+}
+
+@for $z from 1 through $grid {
+    body:has(#z-#{$z}:checked):has(#left4:checked, #right4:checked) {
+        @for $a from 1 through $grid {
+            .row-#{$z + $a} {
+                @extend %d-none;
+            }
+        }
+    }
+}
+
+@for $z from 1 through $grid {
+    body:has(#z-#{$z}:checked):has(#left2:checked, #right2:checked) {
+        @for $a from 1 through $grid {
+            .row-#{$z - $a} {
+                @extend %d-none;
+            }
+        }
+
+        floor {
+            @extend %flex-end;
+        }
+    }
+}
+
+body:has(#x-1:checked,#x-12:checked):has(.z-rotation:checked) {
+    floor {
+        width: (3 * $tile);
+    }
+}
+
+body:has(#x-2:checked,#x-11:checked):has(.z-rotation:checked) {
+    floor {
+        width: (4 * $tile);
+    }
+}
+
+body:has(#x-1:checked,#x-2:checked):has(.z-rotation:checked) {
+    floor {
+        transform: translate3d(0, -((5 * $tile) - .1), 18rem) rotateX(90deg) !important;
+    }
+}
+//x
+@for $row from 1 through $grid {
+    body:has(#z-#{$row}:checked):has(.x-rotation:checked) {
+        .row-#{$row - 2}, .row-#{$row - 1}, .row-#{$row}, .row-#{$row + 1}, .row-#{$row + 2} {
+            @extend %d-block;
+        }
+
+        z floor {
+            transform: translate3d(0, -(($tile + ($tile / 2)) - .1), #{($row - .5) * $tile }) rotateX(90deg);
+
+            &:before {
+                top: -#{$row * $tile - 2};
+                bottom: -#{( $grid - $row) * $tile + 1};
+            }
+        }
+    }
+}
+
+body:has(#z-1:checked,#z-12:checked):has(.x-rotation:checked) {
+    floor {
+        height: (3 * $tile);
+    }
+}
+
+body:has(#z-2:checked,#z-11:checked):has(.x-rotation:checked) {
+    floor {
+        height: (4 * $tile);
+    }
+}
+
+body:has(#z-1:checked):has(.x-rotation:checked) {
+    floor {
+        transform: translate3d(0, -1.4rem, 4.5rem) rotateX(90deg) !important;
+    }
+}
+
+body:has(#z-2:checked):has(.x-rotation:checked) {
+    floor {
+        transform: translate3d(0, -2.9rem, 6rem) rotateX(90deg) !important;
+    }
+}
+
+body:has(#z-11:checked):has(.x-rotation:checked) {
+    floor {
+        transform: translate3d(0, -2.9rem, 30rem) rotateX(90deg) !important;
+    }
+}
+
+body:has(#z-12:checked):has(.x-rotation:checked) {
+    floor {
+        transform: translate3d(0, -1.4rem, 31.5rem) rotateX(90deg) !important;
+    }
+}
+//break stuff
+/*.col-group-1, .col-group-2, .col-group-3, .row-group-1, .row-group-2, .row-group-3 {
+    display: block !important;
+}
+
+z floor {
+    transform: translate3d(0, -14.9rem, 18rem) rotateX(90deg) !important;
+}*/

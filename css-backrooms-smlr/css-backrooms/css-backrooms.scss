@@ -1,0 +1,33 @@
+﻿@import "a-setup";
+@import "css-sig";
+@import "floor";
+
+@import "darkness2";
+
+@import "floor-map-extends";
+
+body:has(#level-1:checked) {
+    @import "floor-1-map";
+}
+
+body:has(#level-2:checked) {
+    @import "floor-2-map";
+}
+
+@import "wallpapers";
+
+@import "buttons";
+@import "switches";
+@import "movement";
+
+@import "movement-blockers-1";
+@import "movement-blockers-2";
+@import "scares";
+
+@import "gfx";
+
+@import "start";
+@import "end";
+
+@import "build-help";
+/*@import "for-vid";*/

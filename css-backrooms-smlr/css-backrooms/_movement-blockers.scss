@@ -1,0 +1,257 @@
+﻿body:has(.ilower:checked) {
+    #z-2:checked ~ #x-3:checked ~ .x-rotation:checked,
+    #z-3:checked ~ #x-3:checked ~ .x-rotation:checked,
+    #z-5:checked ~ #x-3:checked ~ .x-rotation:checked,
+    #z-2:checked ~ #x-6:checked ~ .x-rotation:checked,
+    #z-2:checked ~ #x-2:checked ~ .x-rotation:checked,
+    #z-3:checked ~ #x-2:checked ~ .x-rotation:checked,
+    #z-6:checked ~ #x-4:checked ~ .x-rotation:checked {
+        ~ buttons > {
+            .upb, .downb {
+                display: none;
+            }
+
+            .upb[for="x-8"], .downb[for="x-8"] {
+                display: block;
+            }
+        }
+    }
+    //just down blocked x
+    #z-4:checked ~ #x-3:checked ~ .x-rotation:checked,
+    #z-1:checked ~ #x-3:checked ~ .x-rotation:checked,
+    #z-2:checked ~ #x-4:checked ~ .x-rotation:checked,
+    #z-3:checked ~ #x-4:checked ~ .x-rotation:checked,
+    #z-1:checked ~ #x-6:checked ~ .x-rotation:checked,
+    #z-2:checked ~ #x-7:checked ~ .x-rotation:checked,
+    #z-3:checked ~ #x-7:checked ~ .x-rotation:checked,
+    #z-4:checked ~ #x-7:checked ~ .x-rotation:checked,
+    #z-5:checked ~ #x-4:checked ~ .x-rotation:checked,
+    #z-6:checked ~ #x-1:checked ~ .x-rotation:checked {
+        ~ buttons > {
+            .downb {
+                display: none;
+            }
+
+            .downb[for="x-8"] {
+                display: block;
+            }
+        }
+    }
+    // just up blocked x
+    #z-6:checked ~ #x-3:checked ~ .x-rotation:checked,
+    #z-1:checked ~ #x-2:checked ~ .x-rotation:checked,
+    #z-1:checked ~ #x-5:checked ~ .x-rotation:checked,
+    #z-2:checked ~ #x-5:checked ~ .x-rotation:checked,
+    #z-3:checked ~ #x-6:checked ~ .x-rotation:checked,
+    #z-4:checked ~ #x-6:checked ~ .x-rotation:checked,
+    #z-5:checked ~ #x-2:checked ~ .x-rotation:checked,
+    #z-4:checked ~ #x-2:checked ~ .x-rotation:checked {
+        ~ buttons > {
+            .upb {
+                display: none;
+            }
+
+            .upb[for="x-8"] {
+                display: block;
+            }
+        }
+    }
+    // walls z
+    // walls z
+    // walls z
+    //up and down blocked z
+    #z-1:checked ~ #x-4:checked ~ .z-rotation:checked,
+    #z-3:checked ~ #x-5:checked ~ .z-rotation:checked,
+    #z-4:checked ~ #x-4:checked ~ .z-rotation:checked,
+    #z-4:checked ~ #x-5:checked ~ .z-rotation:checked,
+    #z-5:checked ~ #x-6:checked ~ .z-rotation:checked,
+    #z-5:checked ~ #x-5:checked ~ .z-rotation:checked,
+    #z-6:checked ~ #x-2:checked ~ .z-rotation:checked {
+        ~ buttons > {
+            .upb, .downb {
+                display: none;
+            }
+
+            .upb[for="z-7"], .downb[for="z-7"] {
+                display: block;
+            }
+        }
+    }
+    //up blocked z
+    #z-2:checked ~ #x-5:checked ~ .z-rotation:checked,
+    #z-3:checked ~ #x-4:checked ~ .z-rotation:checked,
+    #z-3:checked ~ #x-2:checked ~ .z-rotation:checked,
+    #z-4:checked ~ #x-6:checked ~ .z-rotation:checked,
+    #z-5:checked ~ #x-7:checked ~ .z-rotation:checked,
+    #z-5:checked ~ #x-2:checked ~ .z-rotation:checked {
+        ~ buttons > {
+            .upb {
+                display: none;
+            }
+
+            .upb[for="z-7"] {
+                display: block;
+            }
+        }
+    }
+    //down blocked z
+    #z-2:checked ~ #x-4:checked ~ .z-rotation:checked,
+    #z-5:checked ~ #x-4:checked ~ .z-rotation:checked,
+    #z-5:checked ~ #x-1:checked ~ .z-rotation:checked,
+    #z-4:checked ~ #x-2:checked ~ .z-rotation:checked {
+        ~ buttons > {
+            .downb {
+                display: none;
+            }
+
+            .downb[for="z-7"] {
+                display: block;
+            }
+        }
+    }
+}
+
+body:has(.iupper:checked) {
+    /* background: blue;*/
+    /// walls x
+    /// walls x
+    /// walls x
+    // up and down blocked x
+    // z5 x4 needs fixing
+
+    #z-5:checked ~ #x-1:checked ~ .x-rotation:checked,
+    #z-3:checked ~ #x-1:checked ~ .x-rotation:checked,
+    #z-2:checked ~ #x-1:checked ~ .x-rotation:checked,
+    #z-2:checked ~ #x-2:checked ~ .x-rotation:checked,
+    #z-4:checked ~ #x-4:checked ~ .x-rotation:checked,
+    #z-2:checked ~ #x-3:checked ~ .x-rotation:checked {
+        ~ buttons > {
+            .upb, .downb {
+                display: none;
+            }
+
+            .upb[for="x-8"], .downb[for="x-8"] {
+                display: block;
+            }
+        }
+    }
+    //just down blocked x
+    #z-1:checked ~ #x-3:checked ~ .x-rotation:checked,
+    #z-2:checked ~ #x-4:checked ~ .x-rotation:checked,
+    #z-2:checked ~ #x-7:checked ~ .x-rotation:checked,
+    #z-3:checked ~ #x-7:checked ~ .x-rotation:checked,
+    #z-6:checked ~ #x-5:checked ~ .x-rotation:checked,
+    #z-3:checked ~ #x-2:checked ~ .x-rotation:checked,
+    #z-5:checked ~ #x-2:checked ~ .x-rotation:checked,
+    #z-5:checked ~ #x-4:checked ~ .x-rotation:checked,
+    #z-4:checked ~ #x-5:checked ~ .x-rotation:checked,
+    #z-6:checked ~ #x-1:checked ~ .x-rotation:checked {
+        ~ buttons > {
+            .downb {
+                display: none;
+            }
+
+            .downb[for="x-8"] {
+                display: block;
+            }
+        }
+    }
+    // just up blocked x
+    #z-5:checked ~ #x-3:checked ~ .x-rotation:checked,
+    #z-4:checked ~ #x-3:checked ~ .x-rotation:checked,
+    #z-4:checked ~ #x-7:checked ~ .x-rotation:checked,
+    #z-1:checked ~ #x-2:checked ~ .x-rotation:checked,
+    #z-3:checked ~ #x-6:checked ~ .x-rotation:checked,
+    #z-6:checked ~ #x-4:checked ~ .x-rotation:checked,
+    #z-6:checked ~ #x-7:checked ~ .x-rotation:checked,
+    #z-2:checked ~ #x-6:checked ~ .x-rotation:checked {
+        ~ buttons > {
+            .upb {
+                display: none;
+            }
+
+            .upb[for="x-8"] {
+                display: block;
+            }
+        }
+    }
+    // walls z
+    // walls z
+    // walls z
+    //up and down blocked z
+    #z-1:checked ~ #x-4:checked ~ .z-rotation:checked,
+    #z-1:checked ~ #x-5:checked ~ .z-rotation:checked,
+    #z-2:checked ~ #x-4:checked ~ .z-rotation:checked,
+    #z-3:checked ~ #x-2:checked ~ .z-rotation:checked,
+    #z-3:checked ~ #x-5:checked ~ .z-rotation:checked,
+    #z-5:checked ~ #x-6:checked ~ .z-rotation:checked,
+    #z-2:checked ~ #x-5:checked ~ .z-rotation:checked,
+    #z-5:checked ~ #x-2:checked ~ .z-rotation:checked,
+    #z-1:checked ~ #x-6:checked ~ .z-rotation:checked,
+    #z-4:checked ~ #x-2:checked ~ .z-rotation:checked,
+    #z-6:checked ~ #x-6:checked ~ .z-rotation:checked,
+    #z-6:checked ~ #x-5:checked ~ .z-rotation:checked,
+    #z-6:checked ~ #x-2:checked ~ .z-rotation:checked,
+    #z-4:checked ~ #x-6:checked ~ .z-rotation:checked,
+    #z-6:checked ~ #x-3:checked ~ .z-rotation:checked,
+    #z-6:checked ~ #x-4:checked ~ .z-rotation:checked,
+    #z-3:checked ~ #x-4:checked ~ .z-rotation:checked {
+        ~ buttons > {
+            .upb, .downb {
+                display: none;
+            }
+
+            .upb[for="z-7"], .downb[for="z-7"] {
+                display: block;
+            }
+        }
+    }
+    //up blocked z
+    #z-3:checked ~ #x-3:checked ~ .z-rotation:checked,
+    #z-2:checked ~ #x-2:checked ~ .z-rotation:checked,
+    #z-3:checked ~ #x-6:checked ~ .z-rotation:checked,
+    #z-4:checked ~ #x-7:checked ~ .z-rotation:checked,
+    #z-5:checked ~ #x-3:checked ~ .z-rotation:checked,
+    #z-5:checked ~ #x-5:checked ~ .z-rotation:checked,
+    #z-6:checked ~ #x-7:checked ~ .z-rotation:checked,
+    #z-5:checked ~ #x-4:checked ~ .z-rotation:checked {
+        ~ buttons > {
+            .upb {
+                display: none;
+            }
+
+            .upb[for="z-7"] {
+                display: block;
+            }
+        }
+    }
+    //down blocked z
+
+    #z-2:checked ~ #x-6:checked ~ .z-rotation:checked,
+    #z-4:checked ~ #x-3:checked ~ .z-rotation:checked,
+    #z-4:checked ~ #x-5:checked ~ .z-rotation:checked,
+    #z-4:checked ~ #x-4:checked ~ .z-rotation:checked,
+    #z-5:checked ~ #x-7:checked ~ .z-rotation:checked {
+        ~ buttons > {
+            .downb {
+                display: none;
+            }
+
+            .downb[for="z-7"] {
+                display: block;
+            }
+        }
+    }
+}
+
+#ilift7:checked ~ #z-2:checked ~ #x-2:checked ~ .z-rotation:checked {
+    ~ buttons > {
+        .upb {
+            display: none;
+        }
+
+        .upb[for="z-7"] {
+            display: block;
+        }
+    }
+}

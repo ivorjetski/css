@@ -1,0 +1,65 @@
+﻿buttons {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translate3d(0,0,0);
+    z-index: 2;
+
+    label {
+        font-size: 1.5rem;
+        border-radius: .25em;
+        padding: .2em;
+        cursor: pointer;
+        width: 3em;
+        aspect-ratio: 1/1;
+        position: absolute;
+        box-sizing: border-box;
+        background: #000;
+        color: #fff;
+
+        &.leftb {
+            bottom: 1em;
+            right: 8em;
+        }
+
+        &.rightb {
+            bottom: 1em;
+            right: 1em;
+        }
+
+        &.downb {
+            bottom: 1em;
+            right: 4.5em;
+        }
+
+        &.upb {
+            bottom: 4.5em;
+            right: 4.5em;
+        }
+
+        &:after {
+            font-size: 1.5em;
+            content: '\2191';
+        }
+
+        &.leftb:after {
+            content: '\2190';
+        }
+
+        &.rightb:after {
+            content: '\2192';
+        }
+
+        &.downb:after {
+            content: '\2193';
+        }
+
+        &:hover, &:focus, &:active {
+            transform: translate3d(0,.2rem,0) scale(.98);
+        }
+    }
+}
+
+.dead {
+    opacity: .9;
+}

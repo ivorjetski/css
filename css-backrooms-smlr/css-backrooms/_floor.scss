@@ -1,0 +1,52 @@
+﻿body content floor {
+    display: flex;
+    align-content: flex-start;
+    width: (12 * $tile);
+    height: (12 * $tile);
+    flex-wrap: wrap;
+}
+
+body:has(.x-rotation:checked) floor {
+    width: (12 * $tile);
+    height: (5 * $tile);
+}
+
+body:has(.z-rotation:checked) floor {
+    width: (5 * $tile);
+    height: (12 * $tile);
+}
+
+z floor tile {
+    background: linear-gradient(90deg, $dirt,$none $shadow, $none), linear-gradient(270deg,$dirt,$none $shadow, $none);
+    position: relative;
+    box-sizing: content-box;
+    margin: -.0025rem;
+
+    span {
+        width: 100%;
+        height: 100%;
+        transform: translateZ(6rem) rotateY(180deg);
+        transform-origin: bottom;
+        outline: .05rem solid var(--dark-beige);
+    }
+
+    &:before, &:after {
+        width: 200%;
+        height: 100%;
+        transform-origin: 0 0 0;
+        background-image: radial-gradient(var(--darker-beige) 20%, $none 0), radial-gradient(var(--darker-beige) 20%, $none 0);
+        background-size: .2rem .2rem;
+        background-position: 0 0, .1rem .1rem;
+        background-color: var(--dark-beige);
+        pointer-events: auto;
+        /*    outline: .001rem solid #000;*/
+    }
+
+    &:before {
+        transform: translate3d(0,0,($tile * 2)) rotateY(90deg);
+    }
+
+    &:after {
+        transform: translate3d($tile,0,0) rotateY(-90deg);
+    }
+}

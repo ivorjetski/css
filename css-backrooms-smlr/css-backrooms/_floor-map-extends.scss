@@ -1,0 +1,146 @@
+﻿%r901 {
+    transform: rotateZ(90deg);
+
+    & > u:nth-of-type(1) {
+        transform: rotateZ(-90deg);
+    }
+
+    &:before {
+        transform: translate3d(0,0,($tile * 2)) rotateY(90deg);
+        content: "r90";
+    }
+
+    &:after, &:before {
+        filter: brightness(1);
+    }
+}
+
+%top-left {
+    background: linear-gradient(90deg,$dirt,$none $shadow, $none), linear-gradient($dirt,$none $shadow, $none);
+
+    &:after {
+        transform: translate3d(0,0,0) rotateY(-90deg) rotateX(-90deg);
+        filter: brightness(1);
+    }
+
+    &:before {
+        transform: translate3d(0,0,($tile * 2)) rotateY(90deg);
+        width: 200%;
+        content: "top left";
+    }
+}
+
+%top-right {
+    background: linear-gradient(180deg,$dirt,$none $shadow, $none), linear-gradient(270deg,$dirt,$none $shadow, $none);
+
+    &:before {
+        transform: translate3d(0,0,0) rotateY(-90deg) rotateX(-90deg);
+        filter: brightness(1);
+        content: "top right";
+    }
+    //wood
+    span:before {
+        transform: translate3d(-.024rem, 0, 5.5rem) rotateY(90deg) scaleX(-1) !important;
+    }
+}
+
+%bottom-left {
+    background: linear-gradient(90deg,$dirt,$none $shadow, $none), linear-gradient($dirt,$none $shadow, $none);
+    transform: rotateZ(-90deg);
+
+    & > u:nth-of-type(1) {
+        transform: rotateZ(90deg);
+    }
+
+    &:after {
+        transform: translate3d(0,0,0) rotateY(-90deg) rotateX(-90deg);
+        filter: brightness(.9);
+    }
+
+    &:before {
+        filter: brightness(1);
+        content: "bottom left";
+    }
+}
+
+%bottom-right {
+    background: linear-gradient(180deg,$dirt,$none $shadow, $none), linear-gradient(-90deg, $dirt, $none $shadow, $none);
+    transform: rotateZ(90deg);
+
+    & > u:nth-of-type(1) {
+        transform: rotateZ(-90deg);
+    }
+
+    &:before {
+        transform: translate3d(0,0,0) rotateY(-90deg) rotateX(-90deg);
+    }
+
+    &:after {
+        filter: brightness(1);
+        content: "bottom right";
+    }
+    //wood
+    span:before {
+        transform: translate3d(-.024rem, 0, 5.5rem) rotateY(90deg) scaleX(-1) !important;
+    }
+}
+
+%no-walls {
+    background: none;
+
+    &:before {
+        display: none;
+    }
+    //light floor
+    &:after {
+        width: 150%;
+        height: 150%;
+        transform: translate3d(0,-($tile / 2),.01rem);
+        background: radial-gradient(var(--light-beige), $none);
+        background-size: cover;
+        filter: blur(.5rem);
+        opacity: .4;
+    }
+}
+
+%no-left {
+    background: linear-gradient(-90deg,$dirt,$none $shadow, $none);
+
+    &:before {
+        display: none;
+    }
+    //wood
+    span:before {
+        transform: translate3d(-0.024rem, 0, 5.5rem) rotateY(90deg) scaleX(-1) !important;
+    }
+}
+
+%no-right {
+    background: linear-gradient(90deg,$dirt,$none $shadow, $none);
+
+    &:after {
+        display: none;
+    }
+}
+
+@keyframes flicker {
+    40%,42%,60%,62%,80%,82%,88%,90%, 95%, 97% {
+        background: #fff;
+        box-shadow: 0 0 1rem $white, inset 0 0 .2rem $ceiling2;
+    }
+
+    41%,61%,81%,89%,96% {
+        background: $ceiling2;
+        box-shadow: 0 0 1rem $ceiling2, inset 0 0 .2rem $ceiling2;
+    }
+}
+
+@keyframes flicker2 {
+    40%,42%,60%,62%,80%,82%,88%,90%, 95%, 97% {
+        opacity: .4;
+    }
+
+    41%,61%,81%,89%,96% {
+        opacity: 0;
+    }
+}

@@ -1,0 +1,286 @@
+﻿// start face
+
+other:nth-of-type(1) {
+    transform: translate3d(($tile * 2), 0, 0);
+
+    > u {
+        width: 1rem;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        transform: translate3d(1rem, 0, 1.5rem) rotateX(-90deg);
+        overflow: hidden;
+        opacity: 0;
+
+        &:before {
+            border-radius: 49% 51% 50% 50% / 85% 84% 16% 15%;
+            width: .5rem;
+            height: .35rem;
+            bottom: -.45rem;
+            box-shadow: 0 .9rem 0 1rem #000;
+        }
+
+        &:after {
+            border-radius: 49% 51% 50% 50% / 83% 83% 17% 17%;
+            width: .5rem;
+            height: .2rem;
+            bottom: -.8rem;
+            background: #000;
+        }
+
+        &:before, &:after, u {
+            right: 0;
+            margin: auto;
+        }
+
+        > u {
+            width: .2rem;
+            height: .2rem;
+            top: .3rem;
+            box-shadow: -.2rem 0 0 -.05rem #000, .2rem 0 0 -.05rem #000;
+            border-radius: 50%;
+
+            &:before, &:after {
+                box-shadow: -.8rem -.9rem 0 1rem #000;
+                border-radius: 50%;
+                transform: translate3d(-.2rem,0,0);
+                width: .2rem;
+                height: .2rem;
+            }
+
+            &:after {
+                transform: translate3d(.2rem,0,0);
+                box-shadow: .8rem -.9rem 0 1rem #000;
+            }
+        }
+    }
+}
+
+// lady
+
+$ani: 2s ease-in-out forwards;
+
+other:nth-of-type(2) {
+    transform: translate3d(0, 0, 0) rotateZ(-90deg);
+
+    > u {
+        width: .5rem;
+        aspect-ratio: 1/1;
+        background: $drk;
+        opacity: 0;
+
+        &:before {
+            //wn2
+            width: 1.4rem;
+            height: 2rem;
+            border-top: 2rem solid $drk;
+            transform: translate3d(-.5rem, 1rem, 0) rotate(-1deg);
+        }
+
+        > u {
+            //wn3
+            width: .8rem;
+            height: 1rem;
+            transform: translate3d(-.2rem, .55rem, 0);
+            background: $drk;
+
+            &:before {
+                //wn4
+                border-radius: .5rem;
+                aspect-ratio: 1/1;
+                border-left: .2rem solid $drk;
+                border-right: .2rem solid $drk;
+                border-top: .4rem solid $drk;
+            }
+        }
+    }
+}
+
+body:has(#z-1:checked):has(#left1:checked),
+body:has(#z-3:checked):has(#x-4:checked):has(#left1:checked),
+body:has(#z-4:checked):has(#x-4:checked):has(#left1:checked),
+body:has(#z-9:checked):has(#x-3:checked):has(#left1:checked),
+body:has(#z-9:checked):has(#x-7:checked):has(#left1:checked),
+body:has(#z-5:checked):has(#x-7:checked):has(#left1:checked),
+body:has(#x-8:checked):has(#left4:checked) {
+    other:nth-of-type(2) > u {
+        animation: walk-north $ani;
+
+        &:before {
+            animation: walk-north-2 $ani;
+        }
+
+        > u {
+            animation: walk-north-3 $ani;
+
+            &:before {
+                animation: walk-north-4 $ani;
+            }
+        }
+    }
+}
+
+body:has(#z-3:checked):has(#x-4:checked):has(#left1:checked),
+body:has(#z-4:checked):has(#x-4:checked):has(#left1:checked),
+body:has(#z-9:checked):has(#x-3:checked):has(#left1:checked) {
+    other:nth-of-type(2) {
+        transform: translate3d(0, ($tile * 2), 0) rotateZ(-90deg);
+    }
+}
+
+body:has(#z-5:checked):has(#x-7:checked):has(#left1:checked) {
+    other:nth-of-type(2) {
+        transform: translate3d(($tile * 1), ($tile * 2), 0) rotateZ(-90deg);
+    }
+}
+
+body:has(#x-8:checked):has(#left4:checked) {
+    other:nth-of-type(2) {
+        transform: translate3d(6rem, 14rem,0);
+
+        > u {
+            animation: walk-north-f2 $ani;
+        }
+    }
+}
+
+other:nth-of-type(2) > u {
+    @keyframes walk-north {
+        0% {
+            transform: translate3d(-5rem, 0rem, 3.2rem) rotateY(0deg) rotateX(-90deg) rotate(-5deg) scaleY(2.5) scale(0.5) scaleX(-1);
+        }
+
+        20%,80% {
+            border-radius: 23% 69% 27% 45% / 78% 42% 50% 15%;
+        }
+
+        60% {
+            border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+            transform: translate3d(1rem, 0rem, 3.2rem) rotateY(0deg) rotateX(-90deg) rotate(0deg) scaleY(2.5) scale(0.5) scaleX(-1);
+            opacity: .1;
+        }
+
+        60.1% {
+            transform: translate3d(1rem, 0rem, 3.2rem) rotateY(0deg) rotateX(-90deg) rotate(-1deg) scaleY(2.5) scale(0.5) scaleX(1);
+        }
+
+        100% {
+            transform: translate3d(-5rem, 0rem, 3.2rem) rotateY(0deg) rotateX(-90deg) rotate(-5deg) scaleY(2.5) scale(0.5) scaleX(1);
+            opacity: 0;
+        }
+    }
+
+    @keyframes walk-north-f2 {
+        0% {
+            transform: translate3d(-5rem, 0rem, 3.2rem) rotateY(0deg) rotateX(-90deg) rotate(-5deg) scaleY(2.5) scale(0.5) scaleX(-1);
+        }
+
+        20%,80% {
+            border-radius: 23% 69% 27% 45% / 78% 42% 50% 15%;
+        }
+
+        60% {
+            border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+            transform: translate3d(1rem, 0rem, 3.2rem) rotateY(0deg) rotateX(-90deg) rotate(0deg) scaleY(2.5) scale(0.5) scaleX(-1);
+            opacity: .5;
+        }
+
+        60.1% {
+            transform: translate3d(1rem, 0rem, 3.2rem) rotateY(0deg) rotateX(-90deg) rotate(-1deg) scaleY(2.5) scale(0.5) scaleX(1);
+        }
+
+        100% {
+            transform: translate3d(-5rem, 0rem, 3.2rem) rotateY(0deg) rotateX(-90deg) rotate(-5deg) scaleY(2.5) scale(0.5) scaleX(1);
+            opacity: 0;
+        }
+    }
+
+    @keyframes walk-north-2 {
+        60% {
+            border-radius: 49% 51% 50% 50% / 92% 94% 6% 8%;
+        }
+
+        20%,80% {
+            border-radius: 47% 31% 47% 48% / 86% 84% 14% 12%;
+        }
+    }
+
+    @keyframes walk-north-3 {
+        60% {
+            border-radius: .1rem;
+        }
+
+        20%,80% {
+            border-radius: 47% 43% 28% 50% / 31% 15% 70% 64%;
+        }
+    }
+
+    @keyframes walk-north-4 {
+        60% {
+            width: 1.5rem;
+            transform: translate3d(-.35rem, -.1rem, 0) rotate(1deg);
+        }
+
+        20%,80% {
+            width: 1rem;
+            transform: translate3d(.2rem, -.1rem, 0) rotate(1deg);
+        }
+    }
+}
+// oil painting
+
+tile:nth-of-type(110) {
+    > u:nth-of-type(2) {
+        width: 1.5rem;
+        height: 1.9rem;
+        border-radius: .05rem;
+        transform: translate3d(2.25rem, -.94rem, 2.5rem) rotateX(-90deg);
+        border: .1rem ridge var(--ceiling);
+        overflow: hidden;
+        background: radial-gradient($dirt 20%, $none 0), radial-gradient($dirt 70%, $none 0), linear-gradient( $body, var(--background));
+        background-size: .2rem .2rem,.2rem .2rem,auto;
+        background-position: 0 0, .1rem .1rem, 0 0;
+        box-shadow: inset 0 0 .2rem $drk, 0 .1rem .05rem $dirt;
+
+        &:after {
+            width: .5rem;
+            height: .7rem;
+            border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+            background: $drk;
+            transform: translate3d(.3rem,.1rem,0);
+            filter: blur(.05rem);
+        }
+
+        &:before {
+            //wn2
+            width: 1.4rem;
+            height: 2rem;
+            border-top: 2rem solid $drk;
+            transform: translate3d(-.2rem, 1.5rem, 0) rotate(-1deg);
+            //turn
+            border-radius: 47% 31% 47% 48% / 86% 84% 14% 12%;
+            filter: blur(.05rem);
+        }
+
+        > u {
+            //body
+            width: .6rem;
+            height: 1.3rem;
+            transform: translate3d(.3rem, .6rem, 0);
+            background: $drk;
+            border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+            filter: blur(.05rem);
+
+            &:before {
+                //wn4
+                border-radius: .5rem;
+                border-left: .15rem solid $drk;
+                border-right: .15rem solid $drk;
+                border-top: .3rem solid $drk;
+                // turn
+                width: 1rem;
+                height: 1.2rem;
+                transform: translate3d(-.2rem, .1rem, 0);
+            }
+        }
+    }
+}

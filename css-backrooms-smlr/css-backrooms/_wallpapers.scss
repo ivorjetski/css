@@ -1,0 +1,77 @@
+﻿$db2: var(--darker-beige);
+
+$db: var(--db);
+
+%wp3 {
+    background: repeating-linear-gradient($none, $none .1rem, $db .1rem, $db .11rem ), var(--medium-beige);
+}
+
+z floor tile {
+    // nice wallpaper
+    //wallpaper 1
+    $wp-alt-2: 92, 29;
+
+    //wallpaper 2
+    $wp-alt-1: 30;
+
+    $random-count: random(20);
+    $max-random: 144;
+    $wp-alt-3: ();
+
+    @function generate-random-list($count, $max) {
+        $list: ();
+
+        @for $i from 1 through $count {
+            $list: append($list, random($max));
+        }
+
+        @return $list;
+    }
+
+    $wp-alt-3: generate-random-list($random-count, $max-random);
+
+    &:before, &:after, &:nth-of-type(90):after {
+        width: 200%;
+        height: 100%;
+        transform-origin: 0 0 0;
+        background-image: radial-gradient($db 20%, $none 0), radial-gradient($db 20%, $none 0);
+        background-size: .2rem .2rem;
+        background-position: 0 0, .1rem .1rem;
+        background-color: var(--medium-beige);
+    }
+
+    @each $i in $wp-alt-1 {
+        &:nth-of-type(#{$i}) {
+            &:after, &:before {
+                background: repeating-linear-gradient($none, $none .15rem, $db .15rem, $db .2rem ), var(--medium-beige);
+            }
+        }
+    }
+
+    @each $i in $wp-alt-3 {
+        &:nth-of-type(#{$i}) {
+            &:after, &:before {
+                @extend %wp3;
+            }
+        }
+    }
+
+    @each $i in $wp-alt-2 {
+        &:nth-of-type(#{$i}) {
+            &:after, &:before {
+                background-color: var(--medium-beige);
+                background-image: radial-gradient($db 20%, $none 0), //
+                repeating-linear-gradient(var(--medium-beige) 5%, $none 5%, $none 95%, var(--medium-beige) 95%, var(--medium-beige) 100% ), //
+                repeating-linear-gradient($db 15%, $none 15%, $none 85%, $db 85%, $db 100% ), //
+                linear-gradient(-135deg, $none 50%, var(--medium-beige) 50%), //
+                linear-gradient(-45deg, $none 50%, var(--medium-beige) 50%), //
+                //
+                linear-gradient(-135deg, $none 50%, $db 50%), //
+                linear-gradient(-45deg, $none 50%, $db 50%);
+                background-size: .3rem .2rem;
+                background-position: .3rem 0, 0 0, 0 0, 0 0, 0 0, -.2rem 0, -.2rem 0;
+                background-repeat: repeat;
+            }
+        }
+    }
+}

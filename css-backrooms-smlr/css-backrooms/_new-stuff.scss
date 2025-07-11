@@ -1,0 +1,54 @@
+﻿// strafe
+
+%strafe {
+    display: block !important;
+    border-radius: 3em;
+    font-size: .5em;
+    aspect-ratio: auto;
+    width: 4.5rem;
+    bottom: 13.5em;
+    right: 24em;
+}
+
+%strafer {
+    bottom: 13.5em;
+    right: 3em;
+}
+
+@for $i from 0 through $grid {
+    body:has(#x-#{$i}:checked):has(#left4:checked, #right4:checked) {
+        buttons > {
+            .upb[for="x-#{$i - 1}"], .upb[for="x-#{$i + 1}"] {
+                @extend %strafe;
+
+                &:after {
+                    content: 'STRAFE';
+                    line-height: 2em;
+                }
+            }
+
+            .upb[for="x-#{$i + 1}"] {
+                @extend %strafer;
+            }
+        }
+    }
+}
+
+@for $i from 0 through $grid {
+    body:has(#z-#{$i}:checked):has(#left1:checked, #right3:checked) {
+        buttons > {
+            .upb[for="z-#{$i - 1}"], .upb[for="z-#{$i + 1}"] {
+                @extend %strafe;
+
+                &:after {
+                    content: 'STRAFE';
+                    line-height: 2em;
+                }
+            }
+
+            .upb[for="z-#{$i - 1}"] {
+                @extend %strafer;
+            }
+        }
+    }
+}

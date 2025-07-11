@@ -1,0 +1,294 @@
+﻿wintext {
+    transform: scale(0);
+    position: absolute;
+    top: 10rem;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100%;
+    max-width: 80rem;
+    font-size: 4rem;
+    text-align: center;
+    line-height: 1.5em;
+    background: $white;
+    color: $blk;
+    padding: 1rem;
+    border-radius: 2rem;
+    border: 1rem solid $red;
+    box-shadow: inset 0 0 0 .25rem $blk,inset 0 .25rem .5rem $blk;
+    background: repeating-radial-gradient(circle at 50% 30%, darken($white,1), darken($white,1) 1rem, $white 1rem, $white 2rem);
+    display: none;
+
+    h4 {
+        margin-top: -1rem;
+    }
+
+    h1, h3, h4 {
+        font-weight: normal;
+    }
+
+    label {
+        display: inline-block;
+        font-size: 3rem;
+        border-radius: 1rem;
+        padding: 1em 2rem;
+        color: $body;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all .15s ease-in-out;
+        position: relative;
+        margin-bottom: .5rem;
+
+        &:before, &:after {
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            border-radius: 1rem;
+            left: 0;
+            right: 0;
+            top: 0;
+            transition: all .15s ease-in-out;
+        }
+
+        &:before {
+            background: linear-gradient($kk, rgba($body,.5)), //
+            linear-gradient(90deg, lighten($kk,20), rgba($body,.5)), //
+            conic-gradient(from 20deg, currentColor, $kk, currentColor, currentColor, currentColor, $kk, currentColor,currentColor,currentColor, $kk, currentColor,currentColor,currentColor, $kk, currentColor, currentColor,currentColor), $key;
+            transform: translate3d(0, 0, -.2rem);
+            box-shadow: 0 .5rem .5rem .5rem rgba($blk,.3);
+        }
+
+        &:after {
+            background: radial-gradient( rgba($body,.5), $key), $key;
+            transform: translate3d( 0, -.5rem, -.1rem) scale(.75);
+            box-shadow: inset 0 0 .5rem lighten($kk,30), 0 0 .5rem lighten($kk,20);
+            font-size: 4rem;
+            content: 'Return ↵';
+        }
+
+        &:hover, &:focus {
+            transform: translate3d(0,.5rem,-10rem) scale(.98);
+            color: $blk;
+
+            &:before {
+                box-shadow: 0 .1rem .5rem .25rem rgba($blk,.8);
+            }
+        }
+    }
+
+    .badge {
+        padding: 1rem;
+        border-radius: 50%;
+        width: 11rem;
+        height: 11rem;
+        margin: 2rem auto;
+        box-shadow: 0 .5rem .5rem .5rem rgba($blk,.3), inset 0 0 0 5rem $blk;
+        transform: scale(.9);
+        position: relative;
+        border: dashed .5rem $blk;
+        background: $red;
+
+        &:before, &:after, div:before, div:after {
+            content: '';
+            position: absolute;
+        }
+
+        &:before {
+            height: 1rem;
+            border: 3rem solid $none;
+            top: 10rem;
+            border-left: 3rem solid $blk;
+            border-right: 3rem solid $blk;
+            left: 3.5rem;
+        }
+
+        & > div {
+            width: 9rem;
+            height: 9rem;
+            background: $red;
+            border-radius: 1rem;
+            margin: auto;
+            position: relative;
+            border: 1rem solid $red;
+            box-shadow: inset 0 0 0 1rem $white;
+            transform: rotate(45deg);
+
+            &:before, &:after {
+                width: 4rem;
+                height: 2rem;
+            }
+
+            &:before {
+                border-bottom: 1rem solid $white;
+                border-right: 1rem solid $white;
+                left: 2rem;
+                top: 4rem;
+            }
+
+            &:after {
+                border-top: 1rem solid $white;
+                border-left: 1rem solid $white;
+                left: 4rem;
+                top: 2rem;
+                box-shadow: 0 -1rem 0 $red, -1rem 0 0 $red, -2rem 0 0 $white;
+            }
+        }
+    }
+
+    .button {
+        background: radial-gradient( farthest-corner at bottom, rgba($blk,.5), rgba($red,.1));
+        filter: brightness(1.5);
+        padding: 1rem;
+        box-shadow: 0 -1rem 2rem $white;
+    }
+}
+
+// do stuff
+
+#z-6:checked ~ #x-7:checked ~ .x-rotation:checked,
+{
+    ~ buttons > {
+        .upb[for="x-8"] {
+            display: none;
+        }
+
+        .upb[for="win"] {
+            display: block;
+        }
+    }
+}
+
+#win:checked {
+    ~ buttons > {
+        .leftb, .rightb {
+            display: none;
+        }
+    }
+
+    ~ content {
+        > w > x > y {
+            transform: translate3d(500rem,0,0);
+        }
+
+        > win {
+            display: block;
+        }
+    }
+
+    ~ wintext {
+        animation: wintext 7s forwards cubic-bezier(0, 0, 1, 0.5);
+    }
+}
+
+@keyframes wintext {
+    80% {
+        transform: scale(0);
+    }
+
+    99% {
+        transform: scale(1.5) rotate(710deg);
+    }
+
+    100% {
+        transform: scale(1) rotate(720deg);
+    }
+}
+
+//stars
+
+@function stars ($a, $b, $c) {
+    $value: '#{random(100) - 50}vmin #{random(100) - 50}vmin '+ $b + ' ' + $c;
+
+    @for $i from 2 through $a {
+        $value: '#{$value} , #{random(100) - 50}vmin #{random(100) - 50}vmin '+ $b + ' ' + $c;
+    }
+
+    @return unquote($value);
+}
+
+@function stars2 ($a, $b, $c) {
+    $value: '#{random(110) - 55}vmin #{random(110) - 55}vmin '+ $b + ' ' + $c;
+
+    @for $i from 2 through $a {
+        $value: '#{$value} , #{random(110) - 55}vmin #{random(110) - 55}vmin '+ $b + ' ' + $c;
+    }
+
+    @return unquote($value);
+}
+
+$stars1: stars(5, 0, $white);
+$stars2: stars2(7, 0, $red);
+$stars3: stars(10, 0, $white);
+
+@-webkit-keyframes stars {
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate3d(0vmin,0vmin,1000rem) scale(5);
+        opacity: 0;
+    }
+}
+
+win {
+    display: none;
+
+    & > u {
+        width: 1rem;
+        height: 1rem;
+        position: absolute;
+        top: -10vmin;
+        left: 0;
+        box-shadow: $stars1;
+        animation: stars 10s -10s infinite linear;
+        transform: translate3d(0vmin,0vmin,-1000rem) scale(5);
+        opacity: 0;
+    }
+
+    & > u:nth-of-type(2) {
+        animation: stars 9s infinite linear -1s;
+        box-shadow: $stars2;
+    }
+
+    & > u:nth-of-type(3) {
+        animation: stars 8s infinite linear -2s;
+        box-shadow: $stars3;
+    }
+
+    & > u:nth-of-type(4) {
+        animation: stars 7s infinite linear -3s;
+        box-shadow: $stars1;
+    }
+
+    & > u:nth-of-type(5) {
+        animation: stars 6s infinite linear -4s;
+        box-shadow: $stars2;
+    }
+
+    & > u:nth-of-type(6) {
+        animation: stars 5s infinite linear -5s;
+        box-shadow: $stars3;
+    }
+
+    & > u:nth-of-type(7) {
+        animation: stars 4s infinite linear -6s;
+        box-shadow: $stars1;
+    }
+
+    & > u:nth-of-type(8) {
+        animation: stars 3s infinite linear -7s;
+        box-shadow: $stars3;
+    }
+
+    & > u:nth-of-type(9) {
+        animation: stars 2s infinite linear -8s;
+        box-shadow: $stars2;
+    }
+
+    & > u:nth-of-type(10) {
+        animation: stars 1s infinite linear -9s;
+        box-shadow: $stars1;
+    }
+}
