@@ -1,0 +1,276 @@
+﻿light {
+    inset: -150vh 0 auto 0;
+    margin: auto;
+    height: 300vh;
+    z-index: -1;
+    width: 7rem;
+    /*  transform-origin: 50% 0;*/
+    transform: scaleX(0);
+    filter: blur(.5rem);
+    background: linear-gradient( $none,rgba($yellow,.25));
+
+    &:after {
+        background: linear-gradient( $none,$red);
+        height: 100%;
+        width: 100%;
+        transform: rotate(-.5deg);
+        transform-origin: 50% 20%;
+        opacity: .5;
+    }
+
+    &:before {
+        background: linear-gradient( $none,$green);
+        height: 100%;
+        width: 100%;
+        transform: rotate(.5deg);
+        transform-origin: 50% 20%;
+        opacity: .5;
+    }
+}
+
+stars {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 1rem;
+    height: 1rem;
+
+    u {
+        width: 50rem;
+        height: 1rem;
+        transform: translate3d(1rem,0,0);
+        transform-origin: 0 0;
+
+        &:before {
+            background: $red;
+            width: 50rem;
+            height: 1rem;
+            transform: rotateY(90deg) translate3d(1000rem,0,0);
+            opacity: .2;
+        }
+    }
+
+    @for $i from 1 through 9 {
+        u:nth-of-type(#{$i}) {
+            transform: translate3d(1rem,0,0) rotate((#{($i * 40)}deg));
+
+            &:before {
+                animation: stars (#{$bpm}s) (-#{($i * $bpm / 1.5)}s) linear infinite;
+                background: adjust-hue( $red, 0% - ($i * 50));
+            }
+        }
+    }
+}
+
+@keyframes stars {
+    100% {
+        transform: rotateY(90deg) translate3d(-100rem,0,0);
+    }
+}
+
+stars2 {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 1rem;
+    height: 1rem;
+    animation: stars2rotate (#{$bpm * 4}s) (#{$bpm * 12}s) linear infinite;
+
+    u {
+        width: 50rem;
+        height: 1rem;
+        transform: translate3d(1rem,0,0);
+        transform-origin: 0 0;
+
+        &:before {
+            background: $red;
+            width: 100rem;
+            height: 2rem;
+            transform: rotateY(90deg) translate3d(500rem,0,0);
+            opacity: .1;
+        }
+    }
+
+    @for $i from 1 through 9 {
+        u:nth-of-type(#{$i}) {
+            transform: translate3d(1rem,0,0) rotate((#{($i * 40)}deg));
+
+            &:before {
+                animation: stars (#{$bpm}s) (-#{($i * $bpm / 1.5)}s) linear infinite;
+                background: adjust-hue( $red, 0% - ($i * 50));
+            }
+        }
+    }
+}
+
+@keyframes stars2rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+playerwrap playerwrap {
+    filter: drop-shadow( -.5rem 0 0 rgba($green,.05)) drop-shadow( .5rem 0 0 rgba($red,.1));
+    animation: shadowrotate (#{$bpm}s) (#{$bpm * 12}s) linear infinite;
+}
+
+@keyframes shadowrotate {
+    33% {
+        filter: drop-shadow( -2rem -.5rem 0 rgba($green,.05)) drop-shadow( 2rem .5rem 0 rgba($red,.1));
+    }
+
+    66% {
+        filter: drop-shadow( 2rem .5rem 0 rgba($green,.05)) drop-shadow( -2rem -.5rem 0 rgba($red,.1));
+    }
+}
+
+//confetti
+
+@function texture ($a) {
+    $value: '#{random(30) - 15}rem #{random(30) - 15}rem 0 currentColor';
+
+    @for $i from 2 through $a {
+        $value: '#{$value} , #{random(30) - 15}rem #{random(30) - 15}rem 0 currentColor';
+    }
+
+    @return unquote($value);
+}
+
+$confetti: texture(4);
+$confetti2: texture(5);
+$confetti3: texture(6);
+$bubbles: texture(10);
+
+bubblewrap, bubbles, bubbles u {
+    inset: 0;
+    margin: auto;
+}
+
+bubbles, bubbles u {
+    box-shadow: $bubbles;
+    width: 2rem;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    scale: 1.5;
+    filter: drop-shadow( -1rem -.5rem 0 rgba($green,.9)) drop-shadow( 1rem .7rem 0 rgba($red,.9));
+    animation: rotate (#{$bpm * 4}s) linear infinite;
+    /*  visibility: hidden;*/
+}
+
+bubbles {
+    opacity: .05;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(-360deg);
+        opacity: 0;
+    }
+
+    50% {
+        scale: 3;
+    }
+}
+
+confetti {
+    transform: translate3d(0, -10%,0);
+    width: 70rem;
+    height: 60%;
+    -webkit-mask-image: linear-gradient(#fff,#fff, $none);
+    inset: -100%;
+    margin: auto;
+    filter: drop-shadow( -.5rem -.5rem 0 rgba($green,.1)) drop-shadow( .5rem .5rem 0 rgba($red,.2));
+    z-index: -1;
+
+    & > u > u {
+        animation: sway (#{$bpm}s) infinite ease-in-out;
+        transform: translate3d(0, 20rem,0) scale(0) rotate(-5deg);
+
+        &, &:before, &:after {
+            content: '';
+            width: 1rem;
+            height: 1rem;
+            color: $red;
+            background: currentColor;
+            box-shadow: $confetti;
+        }
+
+        &:before {
+            color: $yellow;
+            transform: translate3d(4rem, -3rem,0) rotate(-15deg);
+            box-shadow: $confetti2;
+        }
+
+        &:after {
+            color: $green;
+            transform: translate3d(1.5rem, -1rem,0) rotate(20deg);
+            box-shadow: $confetti3;
+        }
+    }
+
+    & > u {
+        transform: translate3d(40rem,10rem,0);
+    }
+
+    & > u:nth-of-type(2) {
+        transform: translate3d(20rem,10rem,0);
+
+        & > u {
+            animation: sway (#{$bpm}s) (#{$bpm / 4}s) infinite linear;
+            transform: translate3d(0, 10rem,0) scale(0);
+        }
+    }
+
+    & > u:nth-of-type(3) {
+        transform: translate3d(50rem,10rem,0);
+
+        & > u {
+            animation: sway (#{$bpm}s) (#{($bpm /4) * 2 }s) infinite linear;
+            transform: translate3d(0, 10rem,0) scale(0);
+        }
+    }
+
+    & > u:nth-of-type(4) {
+        transform: translate3d(20rem,10rem,0);
+
+        & > u {
+            animation: sway (#{$bpm}s) (#{($bpm /4) * 3 }s) infinite linear;
+            transform: translate3d(0, 0,0) scale(0);
+        }
+    }
+}
+
+@keyframes sway {
+    10% {
+        transform: translate3d(.8rem, 5rem,0) scale(1);
+        opacity: 1;
+    }
+
+    25% {
+        transform: translate3d(-.9rem, 15rem,0) scale(1) scaleX(.9);
+    }
+
+    45% {
+        transform: translate3d(.7rem, 28rem,0) scale(1);
+    }
+
+    65% {
+        transform: translate3d(-.9rem, 35rem,0) scale(1) scaleX(1.1);
+        opacity: 1;
+    }
+
+    85% {
+        transform: translate3d(.6rem, 42rem,0) scale(1) scaleX(.9);
+        opacity: 1;
+    }
+
+    99% {
+        transform: translate3d(0, 50rem,0) scale(1) scaleX(1.1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate3d(0, 50rem,0) scale(1);
+        opacity: 0;
+    }
+}

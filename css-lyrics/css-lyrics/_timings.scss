@@ -1,0 +1,235 @@
+﻿// come in
+
+player1 {
+    transform: translate3d(0,30rem,0);
+    animation: up (#{$bpm * 4 }s) (#{$bpm * 1.5}s) ease-in-out forwards;
+}
+
+@keyframes up {
+    10% {
+        transform: translate3d(0,-2rem,0) scale(5);
+    }
+
+    90% {
+        transform: translate3d(0,-2rem,0) scale(5);
+    }
+
+    100% {
+        transform: translate3d(0,0rem,0);
+    }
+}
+
+//light on
+
+light {
+    /* animation: flash (#{$bpm}s) (#{$bpm * 12}s) ease-in-out infinite;*/
+
+    animation: spot (#{$bpm / 4}s) (#{$bpm * 7}s) ease-in-out forwards;
+
+    &:before {
+        animation: flash (#{$bpm}s) (#{$bpm * 12}s) ease-in-out infinite;
+    }
+
+    &:after {
+        animation: flash (#{$bpm}s) (#{$bpm * 12}s) ease-in-out infinite reverse;
+    }
+}
+
+@keyframes flash {
+    12.5% {
+        transform: rotate(1deg);
+    }
+
+    25% {
+        transform: rotate(-1deg);
+    }
+
+    37.5% {
+        transform: rotate(-2deg);
+    }
+
+    50% {
+        transform: rotate(0deg);
+    }
+
+    62.5% {
+        transform: rotate(2deg);
+    }
+
+    75% {
+        transform: rotate(1deg);
+    }
+
+    87.5% {
+        transform: rotate(-1deg);
+    }
+}
+
+@keyframes spot {
+    50% {
+        opacity: .5;
+        filter: blur(.5rem) brightness(2);
+    }
+
+    100% {
+        opacity: .2;
+        transform: rotateX(50deg) scaleX(1);
+        filter: blur(.1rem) brightness(2);
+    }
+}
+
+// crash
+
+body {
+    animation: crash (#{$bpm * 4 }s) (#{$bpm * 12}s) linear infinite;
+}
+
+@keyframes crash {
+    0% {
+        filter: blur(.1rem) brightness(4);
+    }
+
+    5% {
+        filter: blur(0);
+    }
+}
+
+//light player
+
+main > playerlight {
+    filter: brightness(3);
+    animation: unlight (#{$bpm / 4}s) (#{$bpm * 5}s) linear forwards;
+
+    playerlight {
+        animation: litup (#{$bpm / 4}s) (#{$bpm * 7.1}s) linear forwards;
+        filter: brightness(.3);
+    }
+}
+
+playerwrap {
+    animation: redblue (#{$bpm * 2}s) (#{$bpm * 12}s) linear infinite;
+}
+
+@keyframes redblue {
+    33% {
+        filter: hue-rotate(30deg);
+    }
+
+    66% {
+        filter: hue-rotate(-30deg);
+    }
+}
+
+@keyframes unlight {
+    100% {
+        filter: brightness(1);
+    }
+}
+
+@keyframes litup {
+    50% {
+        filter: brightness(2);
+    }
+
+    100% {
+        filter: brightness(1);
+    }
+}
+
+@keyframes killplayer {
+    100% {
+        display: none;
+        scale: 0;
+    }
+}
+
+@keyframes getreadyplayer {
+    100% {
+        visibility: visible;
+    }
+}
+
+player1 > u {
+    animation: killplayer 0s (#{$bpm * 11}s) linear forwards;
+}
+
+player2 > u {
+    animation: getreadyplayer 0s (#{$bpm * 11}s) linear forwards;
+    visibility: hidden;
+}
+
+player2:nth-of-type(1) {
+    animation: killplayer 0s (#{$bpm * 20}s) linear forwards;
+}
+
+player3 > u {
+    animation: getreadyplayer 0s (#{$bpm * 20}s) linear forwards;
+    visibility: hidden;
+}
+
+player3 {
+    animation: killplayer 0s (#{$bpm * 28}s) linear forwards;
+}
+
+player2:nth-of-type(2) > u {
+    animation: getreadyplayer 0s (#{$bpm * 28}s) linear forwards;
+}
+
+bubblewrap {
+    animation: getreadyplayer 0s (#{$bpm * 28}s) linear forwards;
+    visibility: hidden;
+}
+
+player2:nth-of-type(2) {
+    animation: killplayer 0s (#{$bpm * 36}s) linear forwards;
+}
+
+player4 > u {
+    animation: getreadyplayer 0s (#{$bpm * 36}s) linear forwards;
+    visibility: hidden;
+}
+
+player4 {
+    animation: killplayer 0s (#{$bpm * 44}s) linear forwards;
+}
+
+confetti {
+    animation: getreadyplayer 0s (#{$bpm * 44}s) linear forwards;
+    visibility: hidden;
+}
+
+killlights {
+    animation: killplayer 0s (#{$bpm * 60}s) linear forwards;
+}
+
+killlights:nth-of-type(1) {
+    animation: killlights (#{$bpm / 4}s) (#{$bpm * 60}s) linear forwards;
+}
+
+@keyframes killlights {
+    99% {
+        scale: 1;
+    }
+
+    100% {
+        transform: rotateX(40deg) scaleY(2);
+        scale: 0;
+    }
+}
+
+player2:nth-of-type(3) > u {
+    animation: getreadyplayer 0s (#{$bpm * 44}s) linear forwards;
+}
+
+player2:nth-of-type(3) {
+    animation: killplayer 0s (#{$bpm * 60}s) linear forwards;
+}
+
+player5 > u {
+    animation: getreadyplayer 0s (#{$bpm * 60}s) linear forwards;
+    visibility: hidden;
+}
+
+section {
+    animation: killplayer 0s .1s linear forwards;
+}

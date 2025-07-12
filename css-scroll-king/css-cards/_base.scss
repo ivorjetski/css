@@ -1,0 +1,253 @@
+﻿@mixin scroll {
+    // ↓ THIS IS ALL THAT'S REQUIRED! 😮
+
+    card, card:before, card:after, shadow, input {
+        animation-timeline: scroll();
+    }
+    // ↑ THIS IS ALL THAT'S REQUIRED! 😮
+}
+
+html {
+    font-size: 1vmin;
+}
+
+@media (min-width: 500px) {
+    html {
+        font-size: 5px;
+    }
+}
+
+body {
+    color: $body;
+    font-size: 12rem;
+    font-family: 'Courier New';
+    height: 300vh;
+
+    *, *:before, *:after {
+        box-sizing: border-box;
+        content: '';
+        display: block;
+        transform-style: preserve-3d;
+        position: relative;
+        perspective: 200rem;
+    }
+}
+
+screen, bg, start, scroll {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+bg {
+    background: radial-gradient( #BD243F, $body);
+    background-size: 100% 70vh;
+    transform: translate3d(0,0,100rem);
+}
+
+text {
+    position: absolute;
+    right: 6rem;
+    bottom: 6rem;
+    color: #fff;
+    opacity: 0;
+    animation: show 1s linear forwards;
+
+    span, flip {
+        display: inline-block;
+        animation: bob 1.2s ease-in-out infinite;
+    }
+
+    flip {
+        animation: flip linear;
+        animation-timeline: scroll();
+    }
+}
+
+@keyframes flip {
+    100% {
+        transform: scaleY(-1);
+    }
+}
+
+@keyframes bob {
+    50% {
+        transform: translate3d(0,1rem,0);
+    }
+}
+
+card {
+    margin: auto;
+    height: 96rem;
+    width: 64.5rem;
+    background: #fff;
+    border-radius: 5rem;
+    transform: translate3d(0,0,0) rotate3d(0,0,0,0) rotate(1deg);
+    position: relative;
+    top: 6rem;
+
+    & *, & *:before, & *:after, &:before, &:after {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    &:before, &:after {
+        width: 100%;
+        height: 100%;
+        transform: translate3d(0,0,-.2rem) rotateY(180deg);
+        border-radius: 5rem;
+        box-shadow: inset 0 0 1rem rgba($body,.5);
+        background-image: linear-gradient(to right bottom, rgba($body,.2),$none,rgba(#fff,.1),$none,rgba($body,.3));
+    }
+
+    &:after {
+        transform: translate3d(0,0,.2rem) rotateY(0deg);
+    }
+}
+
+back {
+    box-shadow: 0 0 0 1rem $blue, inset 0 0 0 1rem $blue, inset 0 0 0 2rem $card;
+    border-radius: 1rem;
+    height: 93%;
+    width: 90%;
+    border: 2rem solid $none;
+    background-position: .9rem .99rem;
+    background-image: repeating-linear-gradient( 45deg, $none, $none .99rem, $blue .99rem, $blue 1.98rem), repeating-linear-gradient( -45deg, $none, $none .99rem, $blue .99rem, $blue 1.98rem );
+    transform: translate3d(0,0,-.1rem) rotateY(180deg);
+    bottom: 0;
+    right: 0;
+    margin: auto;
+}
+
+shadow {
+    margin: auto;
+    height: 100rem;
+    width: 70rem;
+    background: radial-gradient($body,$none);
+    background: $body;
+    border-radius: 10rem;
+    position: relative;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    transform: translate3d(0,90rem,-50rem) rotateX(90deg) rotate(0deg) skewY(0) scale(1);
+    opacity: .2;
+    box-shadow: 0 0 2vmin $body, 0 0 5vmin $body;
+}
+
+@keyframes rotate {
+    100% {
+        transform: translate3d(0,0,0) rotate3d(1,1,0,-360deg) rotate(1deg);
+    }
+}
+
+@keyframes light {
+    0%,100%,50% {
+        background-color: $none;
+    }
+
+    25% {
+        background-color: rgba($card,.7);
+    }
+
+    75% {
+        background-color: $body;
+    }
+}
+
+@keyframes shadow {
+    25% {
+        transform: translate3d(0,90rem,-50rem) rotateX(90deg) rotate(90deg) skewY(-90deg);
+        opacity: 0;
+    }
+
+    50% {
+        transform: translate3d(0,90rem,-50rem) rotateX(90deg) rotate(90deg) skewY(0);
+        opacity: .2;
+    }
+
+    75% {
+        transform: translate3d(0,90rem,-50rem) rotateX(90deg) rotate(90deg) skewY(90deg);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translate3d(0,90rem,-50rem) rotateX(90deg) rotate(180deg) skewY(0);
+        opacity: .2;
+    }
+}
+
+start {
+    card {
+        animation: rotate 1s linear forwards;
+
+        &:before, &:after {
+            animation: light 1s linear forwards;
+        }
+
+        &:after {
+            animation: light 1s linear reverse;
+        }
+    }
+
+    shadow {
+        animation: shadow 1s linear forwards;
+    }
+
+    animation: hide 1s linear forwards;
+}
+
+scroll {
+    animation: show 1s linear forwards;
+    opacity: 0;
+
+    & card {
+        animation: rotate 1s linear forwards;
+
+        &:before, &:after {
+            animation: light 1s linear forwards;
+        }
+
+        &:after {
+            animation: light 1s linear reverse;
+        }
+    }
+
+    & shadow {
+        animation: shadow 1s linear forwards;
+    }
+    //scroll only happens before this
+    @include scroll;
+}
+
+@keyframes hide {
+    99% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes show {
+    100% {
+        opacity: 1;
+    }
+
+    99% {
+        opacity: 0;
+    }
+}
+
+//king
+front {
+    transform: translate3d(0,0,.1rem) rotateY(0deg);
+    height: 100%;
+    width: 100%;
+    @import "king";
+}

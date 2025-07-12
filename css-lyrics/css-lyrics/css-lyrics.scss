@@ -1,0 +1,29 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
+@import "setup";
+@import "dance";
+@import "lights";
+@import "timings";
+@import "badge";
+@import "css-sig";
+
+*:not(#play-radio), *:before, *:after {
+    animation-play-state: paused !important;
+}
+
+body:has(#play-radio:checked) {
+    &, *, *:before, *:after {
+        animation-play-state: running !important;
+    }
+
+    #stop-radio {
+        scale: 1;
+    }
+
+    play {
+        scale: 0;
+    }
+
+    section {
+        scale: 0;
+    }
+}

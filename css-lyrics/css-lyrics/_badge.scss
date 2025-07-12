@@ -1,0 +1,204 @@
+﻿badge {
+    filter: drop-shadow(1em 1em 0 $wht) drop-shadow(-2em -1em 0 $wht);
+    font-size: .2rem;
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    height: 60em;
+    width: 50em;
+    mix-blend-mode: plus-lighter;
+    animation: go (#{$bpm / 8}s) (#{$bpm / 2}s) ease-in-out forwards;
+
+    @keyframes go {
+        100% {
+            transform: scale(0) rotate(320deg);
+        }
+    }
+
+    & > u:nth-of-type(1) {
+        background: $brand;
+        width: 50em;
+        height: 50em;
+        border-radius: 0 0 25em 25em;
+        transform: translate3d(0,10em,0) rotate(-10deg);
+
+        &:before {
+            background: $brand;
+            width: 50em;
+            height: 50em;
+            border-radius: 0 30em 0 30em;
+            transform: translate3d(0,-20em,0) skewY(-38deg);
+        }
+    }
+
+    & > u:nth-of-type(4) {
+        background: $brand;
+        width: 50em;
+        height: 13em;
+        border-radius: 0 0 50% 50%;
+        transform: translate3d(-2em, 17em, 0) skewX(10deg) skewY(-1deg);
+    }
+    //teeth
+    & > u:nth-of-type(2) {
+        width: 7em;
+        height: 15em;
+        background: $wht;
+        border-radius: 1em;
+        transform: translate3d(19em, 22.5em, 0) skewY(0deg) rotate(-4deg);
+        box-shadow: 0 0 0 .5em $wht;
+
+        &:before {
+            width: 7em;
+            height: 15em;
+            background: $wht;
+            border-radius: 1em;
+            transform: translate3d(9.5em,0, 0) skewY(0deg) rotate(0deg);
+            box-shadow: 0 0 0 .5em $wht;
+        }
+
+        &:after {
+            width: 4.5em;
+            height: 15em;
+            background: $wht;
+            border-radius: 1em;
+            transform: translate3d(18.75em, .5em, 0) skewY(7deg) rotate(0deg);
+            box-shadow: 0 0 0 .25em $wht;
+        }
+    }
+
+    & > u:nth-of-type(3) {
+        width: 6em;
+        height: 15em;
+        background: $wht;
+        border-radius: 1em;
+        transform: translate3d(10.5em, 24.5em, 0) skewY(-17deg) rotate(-4deg);
+        box-shadow: 0 0 0 .25em $wht;
+
+        &:before {
+            width: 4.5em;
+            height: 16em;
+            background: $wht;
+            border-radius: 2em 2em 1em 1em;
+            transform: translate3d(-6.5em,-1em, 0) skewY(0deg) rotate(0deg);
+            box-shadow: 0 0 0 .25em $wht;
+        }
+
+        &:after {
+            width: 2.75em;
+            height: 15em;
+            background: $wht;
+            border-radius: 1em;
+            transform: translate3d(33em, 10em, 0) skewY(37deg) rotate(0deg);
+            box-shadow: 0 0 0 .25em $wht;
+        }
+    }
+    //bottom teeth
+
+    & > u:nth-of-type(5) {
+        width: 45em;
+        height: 45em;
+        border-radius: 50%;
+        transform: translate3d(3.5em, 12em, 0) skewY(0deg) rotate(0deg);
+        overflow: hidden;
+
+        u:nth-of-type(1) {
+            width: 7em;
+            height: 15em;
+            background: $wht;
+            border-radius: 1em 1em 3em 3em;
+            transform: translate3d(16.5em, 28em, 0) skewX(-3deg) rotate(-4deg);
+            box-shadow: 0 0 0 .5em $wht;
+
+            &:before {
+                width: 7em;
+                height: 15em;
+                background: $wht;
+                border-radius: 1em 1em 3em 3em;
+                transform: translate3d(9.5em,0, 0) skewY(0deg) rotate(0deg);
+                box-shadow: 0 0 0 .5em $wht;
+            }
+
+            &:after {
+                width: 4.3em;
+                height: 14em;
+                background: $wht;
+                border-radius: 1em 1em 2em 2em;
+                transform: translate3d(18.75em,0, 0) skewY(6deg) rotate(0deg);
+                box-shadow: 0 0 0 .25em $wht;
+            }
+        }
+
+        & > u:nth-of-type(2) {
+            width: 6em;
+            height: 15em;
+            background: $wht;
+            border-radius: 1em 1em 3em 3em;
+            transform: translate3d(8.25em, 29.75em, 0) skewY(-18deg) skewX(-3.5deg) rotate(-4deg);
+            box-shadow: 0 0 0 .25em $wht;
+
+            &:before {
+                width: 5em;
+                height: 15em;
+                background: $wht;
+                border-radius: 1em 1em 2em 2em;
+                transform: translate3d(-7em,0, 0) skewY(0deg) rotate(0deg);
+                box-shadow: 0 0 0 .25em $wht;
+            }
+
+            &:after {
+                width: 3em;
+                height: 15em;
+                background: $wht;
+                border-radius: 1em;
+                transform: translate3d(33em, 10em, 0) skewY(37deg) rotate(0deg);
+                box-shadow: 0 0 0 .25em $wht;
+            }
+        }
+    }
+    //eye
+    & > u:nth-of-type(6) {
+        background: $wht;
+        width: 18em;
+        height: 26em;
+        border-radius: 50% 50% 45% 55%;
+        transform: translate3d(10em, 0em, 0) skewX(6deg) scale(1.1);
+
+        &:before {
+            width: 7em;
+            height: 9em;
+            background: $brand;
+            border-radius: 50%;
+            transform: translate3d(5em, 10em, 0) skewY(0deg) rotate(0deg);
+        }
+
+        &:after {
+            width: 3em;
+            height: 3em;
+            background: $wht;
+            transform: translate3d(9em, 10em, 0) skewY(0deg) rotate(-2deg);
+        }
+    }
+    //eye
+    & > u:nth-of-type(7) {
+        background: $wht;
+        width: 11em;
+        height: 20em;
+        border-radius: 50% 0 50% 50% / 50% 0 100% 50%;
+        transform: translate3d(31em, 3em, 0) scale(1.1);
+
+        &:before {
+            width: 6em;
+            height: 8em;
+            background: $brand;
+            border-radius: 50%;
+            transform: translate3d(3em, 6.5em, 0) skewY(0deg) rotate(-5deg);
+        }
+
+        &:after {
+            transform: translate3d(3.4em, 4.96em, 0) scale(0.7) rotate(3deg);
+            border: 6em solid $none;
+            border-top-color: $brand;
+            border-right-color: $brand;
+        }
+    }
+}
