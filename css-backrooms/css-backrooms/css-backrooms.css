@@ -32,9 +32,7 @@ body {
   margin: 0;
   text-align: center;
   color: rgba(255, 255, 255, 0);
-  font-family: Courier New, Courier, monospace;
-  perspective: 50.5rem;
-  transform-style: preserve-3d; }
+  font-family: Courier New, Courier, monospace; }
   body, body > div, body > div > div {
     width: 100%;
     height: 100%;
@@ -145,7 +143,7 @@ z floor tile {
   background: linear-gradient(90deg, rgba(27, 26, 14, 0.2), rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0)), linear-gradient(270deg, rgba(27, 26, 14, 0.2), rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0));
   position: relative;
   box-sizing: content-box;
-  margin: -.0025rem; }
+  /*  margin: -.0025rem;*/ }
   z floor tile span {
     width: 100%;
     height: 100%;
@@ -176,7 +174,7 @@ tile > u:nth-of-type(1) {
   tile > u:nth-of-type(1):before, tile > u:nth-of-type(1):after {
     height: 6rem;
     width: 3rem;
-    background: #350808;
+    background: #333;
     transform: translate3d(-1.5rem, 4.5rem, 6rem) rotateX(-90deg);
     backface-visibility: visible;
     opacity: .025;
@@ -403,7 +401,7 @@ body:has(#level-2:checked) z floor tile:nth-of-type(104), body:has(#level-2:chec
 body:has(#level-2:checked) z floor tile:nth-of-type(92) {
   background: linear-gradient(rgba(27, 26, 14, 0.2), rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0)) !important; }
 
-z floor tile:nth-of-type(85):after, z floor tile:nth-of-type(85):before, z floor tile:nth-of-type(75):after, z floor tile:nth-of-type(75):before, z floor tile:nth-of-type(140):after, z floor tile:nth-of-type(140):before, z floor tile:nth-of-type(26):after, z floor tile:nth-of-type(26):before, z floor tile:nth-of-type(48):after, z floor tile:nth-of-type(48):before {
+z floor tile:nth-of-type(33):after, z floor tile:nth-of-type(33):before, z floor tile:nth-of-type(68):after, z floor tile:nth-of-type(68):before {
   background: repeating-linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 0.1rem, var(--db) 0.1rem, var(--db) 0.11rem), var(--medium-beige); }
 
 z floor tile:before, z floor tile:after, z floor tile:nth-of-type(90):after {
@@ -846,52 +844,20 @@ body:has(#z-11:checked):has(.x-rotation:checked) floor {
 body:has(#z-12:checked):has(.x-rotation:checked) floor {
   transform: translate3d(0, -1.4rem, 31.5rem) rotateX(90deg) !important; }
 
+body:has([title="z-2"]:checked):has(.z-rotation:checked) content, body:has([title="x-2"]:checked):has(.x-rotation:checked) content, body:has([title="z-4"]:checked):has(.z-rotation:checked) content, body:has([title="x-4"]:checked):has(.x-rotation:checked) content, body:has([title="z-6"]:checked):has(.z-rotation:checked) content, body:has([title="x-6"]:checked):has(.x-rotation:checked) content, body:has([title="z-8"]:checked):has(.z-rotation:checked) content, body:has([title="x-8"]:checked):has(.x-rotation:checked) content, body:has([title="z-10"]:checked):has(.z-rotation:checked) content, body:has([title="x-10"]:checked):has(.x-rotation:checked) content, body:has([title="z-12"]:checked):has(.z-rotation:checked) content, body:has([title="x-12"]:checked):has(.x-rotation:checked) content {
+  animation: viewbob .5s ease-in-out; }
 @keyframes viewbob {
   20% {
     transform: rotate(1deg) rotateX(0.1deg) skewX(-1deg); }
   80% {
     transform: rotate(-1deg) rotateX(-0.2deg) skewX(1deg); } }
+body:has([title="z-1"]:checked):has(.z-rotation:checked) content, body:has([title="x-1"]:checked):has(.x-rotation:checked) content, body:has([title="z-3"]:checked):has(.z-rotation:checked) content, body:has([title="x-3"]:checked):has(.x-rotation:checked) content, body:has([title="z-5"]:checked):has(.z-rotation:checked) content, body:has([title="x-5"]:checked):has(.x-rotation:checked) content, body:has([title="z-7"]:checked):has(.z-rotation:checked) content, body:has([title="x-7"]:checked):has(.x-rotation:checked) content, body:has([title="z-9"]:checked):has(.z-rotation:checked) content, body:has([title="x-9"]:checked):has(.x-rotation:checked) content, body:has([title="z-11"]:checked):has(.z-rotation:checked) content, body:has([title="x-11"]:checked):has(.x-rotation:checked) content {
+  animation: viewbob2 .5s ease-in-out; }
 @keyframes viewbob2 {
   20% {
     transform: rotate(-1deg) rotateX(0.1deg) skewX(1deg); }
   80% {
     transform: rotate(1deg) rotateX(-0.2deg) skewX(-1deg); } }
-body:has([title="z-1"]:checked):has(.z-rotation:checked) content, body:has([title="x-1"]:checked):has(.x-rotation:checked) content {
-  /*    @extend %viewbob2;*/ }
-
-body:has([title="z-2"]:checked):has(.z-rotation:checked) content, body:has([title="x-2"]:checked):has(.x-rotation:checked) content {
-  /*  @extend %viewbob1;*/ }
-
-body:has([title="z-3"]:checked):has(.z-rotation:checked) content, body:has([title="x-3"]:checked):has(.x-rotation:checked) content {
-  /*    @extend %viewbob2;*/ }
-
-body:has([title="z-4"]:checked):has(.z-rotation:checked) content, body:has([title="x-4"]:checked):has(.x-rotation:checked) content {
-  /*  @extend %viewbob1;*/ }
-
-body:has([title="z-5"]:checked):has(.z-rotation:checked) content, body:has([title="x-5"]:checked):has(.x-rotation:checked) content {
-  /*    @extend %viewbob2;*/ }
-
-body:has([title="z-6"]:checked):has(.z-rotation:checked) content, body:has([title="x-6"]:checked):has(.x-rotation:checked) content {
-  /*  @extend %viewbob1;*/ }
-
-body:has([title="z-7"]:checked):has(.z-rotation:checked) content, body:has([title="x-7"]:checked):has(.x-rotation:checked) content {
-  /*    @extend %viewbob2;*/ }
-
-body:has([title="z-8"]:checked):has(.z-rotation:checked) content, body:has([title="x-8"]:checked):has(.x-rotation:checked) content {
-  /*  @extend %viewbob1;*/ }
-
-body:has([title="z-9"]:checked):has(.z-rotation:checked) content, body:has([title="x-9"]:checked):has(.x-rotation:checked) content {
-  /*    @extend %viewbob2;*/ }
-
-body:has([title="z-10"]:checked):has(.z-rotation:checked) content, body:has([title="x-10"]:checked):has(.x-rotation:checked) content {
-  /*  @extend %viewbob1;*/ }
-
-body:has([title="z-11"]:checked):has(.z-rotation:checked) content, body:has([title="x-11"]:checked):has(.x-rotation:checked) content {
-  /*    @extend %viewbob2;*/ }
-
-body:has([title="z-12"]:checked):has(.z-rotation:checked) content, body:has([title="x-12"]:checked):has(.x-rotation:checked) content {
-  /*  @extend %viewbob1;*/ }
-
 other:nth-of-type(1) {
   transform: translate3d(6rem, 0, 0); }
   other:nth-of-type(1) > u {
@@ -1089,7 +1055,7 @@ tile:nth-of-type(110) > u:nth-of-type(2) {
       transform: translate3d(-0.2rem, 0.1rem, 0); }
 
 body:has(#gfx-3:checked):has(#level-2:checked) > div:before {
-  background: radial-gradient(rgba(137, 25, 18, 0.5), black); }
+  background: radial-gradient(rgba(137, 25, 18, 0.3), #020000); }
 body:has(#gfx-3:checked) > div:before, body:has(#gfx-3:checked) > div:after {
   content: '';
   top: 0;
@@ -1324,7 +1290,6 @@ body:has(#level-2:checked):has(#x-1:checked):has(#z-1:checked) z floor tile:nth-
   transform: translate3d(0rem, 2rem, 4.5rem) rotateY(90deg) rotateX(90deg);
   box-shadow: 3rem 0 0 0.5rem var(--medium-beige), 0 0.5rem 0 var(--medium-beige), 0 -0.5rem 0 var(--medium-beige); }
 body:has(#level-2:checked):has(#x-1:checked):has(#z-1:checked) tile:nth-of-type(75) label, body:has(#level-2:checked):has(#x-2:checked):has(#z-1:checked) tile:nth-of-type(75) label, body:has(#level-2:checked):has(#x-3:checked):has(#z-1:checked) tile:nth-of-type(75) label, body:has(#level-2:checked):has(#x-1:checked):has(#z-2:checked) tile:nth-of-type(75) label, body:has(#level-2:checked):has(#x-2:checked):has(#z-2:checked) tile:nth-of-type(75) label, body:has(#level-2:checked):has(#x-3:checked):has(#z-2:checked) tile:nth-of-type(75) label, body:has(#level-2:checked):has(#x-1:checked):has(#z-3:checked) tile:nth-of-type(75) label, body:has(#level-2:checked):has(#x-2:checked):has(#z-3:checked) tile:nth-of-type(75) label, body:has(#level-2:checked):has(#x-3:checked):has(#z-3:checked) tile:nth-of-type(75) label, body:has(#level-2:checked):has(#x-1:checked):has(#z-4:checked) tile:nth-of-type(75) label, body:has(#level-2:checked):has(#x-2:checked):has(#z-4:checked) tile:nth-of-type(75) label, body:has(#level-2:checked):has(#x-3:checked):has(#z-4:checked) tile:nth-of-type(75) label, body:has(#level-2:checked):has(#x-1:checked):has(#z-5:checked) tile:nth-of-type(75) label, body:has(#level-2:checked):has(#x-2:checked):has(#z-5:checked) tile:nth-of-type(75) label, body:has(#level-2:checked):has(#x-3:checked):has(#z-5:checked) tile:nth-of-type(75) label, body:has(#level-2:checked):has(#x-1:checked):has(#z-6:checked) tile:nth-of-type(75) label, body:has(#level-2:checked):has(#x-2:checked):has(#z-6:checked) tile:nth-of-type(75) label, body:has(#level-2:checked):has(#x-3:checked):has(#z-6:checked) tile:nth-of-type(75) label, body:has(#level-2:checked):has(#x-1:checked):has(#z-7:checked) tile:nth-of-type(75) label, body:has(#level-2:checked):has(#x-2:checked):has(#z-7:checked) tile:nth-of-type(75) label, body:has(#level-2:checked):has(#x-3:checked):has(#z-7:checked) tile:nth-of-type(75) label {
-  /* animation: cot 10s linear forwards infinite;*/
   width: 1.5rem;
   height: 3.01rem;
   transform: translate3d(0rem, 0rem, 0.2rem) rotateZ(90deg);
@@ -1372,7 +1337,6 @@ body:has(#level-2:checked):has(#x-1:checked):has(#z-1:checked) tile:nth-of-type(
     body:has(#level-2:checked):has(#x-1:checked):has(#z-1:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(2), body:has(#level-2:checked):has(#x-2:checked):has(#z-1:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(2), body:has(#level-2:checked):has(#x-3:checked):has(#z-1:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(2), body:has(#level-2:checked):has(#x-1:checked):has(#z-2:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(2), body:has(#level-2:checked):has(#x-2:checked):has(#z-2:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(2), body:has(#level-2:checked):has(#x-3:checked):has(#z-2:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(2), body:has(#level-2:checked):has(#x-1:checked):has(#z-3:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(2), body:has(#level-2:checked):has(#x-2:checked):has(#z-3:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(2), body:has(#level-2:checked):has(#x-3:checked):has(#z-3:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(2), body:has(#level-2:checked):has(#x-1:checked):has(#z-4:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(2), body:has(#level-2:checked):has(#x-2:checked):has(#z-4:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(2), body:has(#level-2:checked):has(#x-3:checked):has(#z-4:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(2), body:has(#level-2:checked):has(#x-1:checked):has(#z-5:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(2), body:has(#level-2:checked):has(#x-2:checked):has(#z-5:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(2), body:has(#level-2:checked):has(#x-3:checked):has(#z-5:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(2), body:has(#level-2:checked):has(#x-1:checked):has(#z-6:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(2), body:has(#level-2:checked):has(#x-2:checked):has(#z-6:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(2), body:has(#level-2:checked):has(#x-3:checked):has(#z-6:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(2), body:has(#level-2:checked):has(#x-1:checked):has(#z-7:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(2), body:has(#level-2:checked):has(#x-2:checked):has(#z-7:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(2), body:has(#level-2:checked):has(#x-3:checked):has(#z-7:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(2) {
       width: 100%;
       height: 100%;
-      /* background: red;*/
       transform-origin: 0;
       transition: transform 2s ease-in-out; }
     body:has(#level-2:checked):has(#x-1:checked):has(#z-1:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(3), body:has(#level-2:checked):has(#x-2:checked):has(#z-1:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(3), body:has(#level-2:checked):has(#x-3:checked):has(#z-1:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(3), body:has(#level-2:checked):has(#x-1:checked):has(#z-2:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(3), body:has(#level-2:checked):has(#x-2:checked):has(#z-2:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(3), body:has(#level-2:checked):has(#x-3:checked):has(#z-2:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(3), body:has(#level-2:checked):has(#x-1:checked):has(#z-3:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(3), body:has(#level-2:checked):has(#x-2:checked):has(#z-3:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(3), body:has(#level-2:checked):has(#x-3:checked):has(#z-3:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(3), body:has(#level-2:checked):has(#x-1:checked):has(#z-4:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(3), body:has(#level-2:checked):has(#x-2:checked):has(#z-4:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(3), body:has(#level-2:checked):has(#x-3:checked):has(#z-4:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(3), body:has(#level-2:checked):has(#x-1:checked):has(#z-5:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(3), body:has(#level-2:checked):has(#x-2:checked):has(#z-5:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(3), body:has(#level-2:checked):has(#x-3:checked):has(#z-5:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(3), body:has(#level-2:checked):has(#x-1:checked):has(#z-6:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(3), body:has(#level-2:checked):has(#x-2:checked):has(#z-6:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(3), body:has(#level-2:checked):has(#x-3:checked):has(#z-6:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(3), body:has(#level-2:checked):has(#x-1:checked):has(#z-7:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(3), body:has(#level-2:checked):has(#x-2:checked):has(#z-7:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(3), body:has(#level-2:checked):has(#x-3:checked):has(#z-7:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(3), body:has(#level-2:checked):has(#x-1:checked):has(#z-1:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(4), body:has(#level-2:checked):has(#x-2:checked):has(#z-1:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(4), body:has(#level-2:checked):has(#x-3:checked):has(#z-1:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(4), body:has(#level-2:checked):has(#x-1:checked):has(#z-2:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(4), body:has(#level-2:checked):has(#x-2:checked):has(#z-2:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(4), body:has(#level-2:checked):has(#x-3:checked):has(#z-2:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(4), body:has(#level-2:checked):has(#x-1:checked):has(#z-3:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(4), body:has(#level-2:checked):has(#x-2:checked):has(#z-3:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(4), body:has(#level-2:checked):has(#x-3:checked):has(#z-3:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(4), body:has(#level-2:checked):has(#x-1:checked):has(#z-4:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(4), body:has(#level-2:checked):has(#x-2:checked):has(#z-4:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(4), body:has(#level-2:checked):has(#x-3:checked):has(#z-4:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(4), body:has(#level-2:checked):has(#x-1:checked):has(#z-5:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(4), body:has(#level-2:checked):has(#x-2:checked):has(#z-5:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(4), body:has(#level-2:checked):has(#x-3:checked):has(#z-5:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(4), body:has(#level-2:checked):has(#x-1:checked):has(#z-6:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(4), body:has(#level-2:checked):has(#x-2:checked):has(#z-6:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(4), body:has(#level-2:checked):has(#x-3:checked):has(#z-6:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(4), body:has(#level-2:checked):has(#x-1:checked):has(#z-7:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(4), body:has(#level-2:checked):has(#x-2:checked):has(#z-7:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(4), body:has(#level-2:checked):has(#x-3:checked):has(#z-7:checked) tile:nth-of-type(75) label > u:nth-of-type(1) > u:nth-of-type(4) {
@@ -1487,8 +1451,8 @@ end-text {
   animation: glitch 2s linear infinite;
   font-size: 1.1rem;
   transform: translate3d(0, -100rem, 0);
-  filter: drop-shadow(-1rem -1rem 0 red, 1rem 1rem 0 green); }
-  end-text:before, end-text:after, end-text label:before, end-text label:after {
+  filter: drop-shadow(-1rem -1rem 0 rgba(255, 0, 0, 0.1)) drop-shadow(1rem 1rem 0 rgba(0, 128, 0, 0.1)); }
+  end-text:before, end-text:after, end-text a:before, end-text a:after {
     width: 99%;
     height: 99%;
     background: #D8D9EF;
@@ -1498,13 +1462,13 @@ end-text {
     top: -1rem;
     z-index: -1;
     animation: glitch2 2s -1s linear infinite; }
-  end-text:after, end-text label:after {
+  end-text:after, end-text a:after {
     left: 1rem;
     top: 1rem;
     animation: glitch2 2s -.5s linear infinite; }
-  end-text label:before, end-text label:after {
+  end-text a:before, end-text a:after {
     background: #1a0606; }
-  end-text label {
+  end-text a {
     background: #4B4640;
     color: #000;
     padding: 1rem;
@@ -1512,8 +1476,9 @@ end-text {
     display: block;
     cursor: pointer;
     position: relative;
-    animation: glitch 2s linear infinite; }
-    end-text label:hover, end-text label:focus, end-text label:active {
+    animation: glitch 2s linear infinite;
+    text-decoration: none; }
+    end-text a:hover, end-text a:focus, end-text a:active {
       background: #1a0606;
       transform: scale(1.1); }
 

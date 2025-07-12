@@ -1,7 +1,7 @@
 ﻿body:has(#gfx-3:checked) {
     &:has(#level-2:checked) {
         > div:before {
-            background: radial-gradient(rgba($red,.5), darken($red,40));
+            background: radial-gradient(rgba($red,.3), darken($red,30));
         }
     }
 

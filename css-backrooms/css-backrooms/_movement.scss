@@ -364,7 +364,7 @@ body:has(#z-12:checked):has(.x-rotation:checked) {
     @if $row % 2 == 0 {
         body:has([title="z-#{$row}"]:checked):has(.z-rotation:checked), body:has([title="x-#{$row}"]:checked):has(.x-rotation:checked) {
             content {
-                /*  @extend %viewbob1;*/
+                @extend %viewbob1;
             }
         }
     }
@@ -372,7 +372,7 @@ body:has(#z-12:checked):has(.x-rotation:checked) {
     @if $row % 2 != 0 {
         body:has([title="z-#{$row}"]:checked):has(.z-rotation:checked), body:has([title="x-#{$row}"]:checked):has(.x-rotation:checked) {
             content {
-                /*    @extend %viewbob2;*/
+                @extend %viewbob2;
             }
         }
     }

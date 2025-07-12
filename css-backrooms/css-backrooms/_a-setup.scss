@@ -23,7 +23,7 @@ $sbg: #D8D9EF;
 $sbtn: #cdcdb8;
 
 $background: #6F6D39;
-$distance: #350808;
+$distance: #333;
 $red: #891912;
 $orange: #ff6a00;
 $yellow: yellow;
@@ -73,8 +73,6 @@ body {
     text-align: center;
     color: $none;
     font-family: Courier New, Courier, monospace;
-    perspective: 50.5rem;
-    transform-style: preserve-3d;
 
     &, & > div, & > div > div {
         width: 100%;
